@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F5EDCE4-7330-4D98-945D-11879A59D76C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Projeto_DuplinhaFeroz</RootNamespace>
+    <AssemblyName>Projeto DuplinhaFeroz</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>v4.6.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aluno.cs" />
+    <Compile Include="DAO_Conexao.cs" />
+    <Compile Include="FormExcluirModalidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcluirModalidade.Designer.cs">
+      <DependentUpon>FormExcluirModalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadastrarModalidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastrarModalidade.Designer.cs">
+      <DependentUpon>FormCadastrarModalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAtualizarAluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAtualizarAluno.Designer.cs">
+      <DependentUpon>FormAtualizarAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultar_AtualizarModalidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultar_AtualizarModalidade.Designer.cs">
+      <DependentUpon>FormConsultar_AtualizarModalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaginaInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPaginaInicial.Designer.cs">
+      <DependentUpon>FormPaginaInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadastrarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastrarUsuarios.Designer.cs">
+      <DependentUpon>FormCadastrarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCadastrarAlunos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCadastrarAlunos.Designer.cs">
+      <DependentUpon>FormCadastrarAlunos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExcluirAluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcluirAluno.Designer.cs">
+      <DependentUpon>FormExcluirAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modalidade.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormExcluirModalidade.resx">
+      <DependentUpon>FormExcluirModalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastrarModalidade.resx">
+      <DependentUpon>FormCadastrarModalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAtualizarAluno.resx">
+      <DependentUpon>FormAtualizarAluno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultar_AtualizarModalidade.resx">
+      <DependentUpon>FormConsultar_AtualizarModalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPaginaInicial.resx">
+      <DependentUpon>FormPaginaInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastrarUsuarios.resx">
+      <DependentUpon>FormCadastrarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCadastrarAlunos.resx">
+      <DependentUpon>FormCadastrarAlunos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExcluirAluno.resx">
+      <DependentUpon>FormExcluirAluno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
