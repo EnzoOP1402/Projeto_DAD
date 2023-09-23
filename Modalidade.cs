@@ -79,17 +79,14 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                Console.WriteLine("-------------------------------------------------------");
-                MySqlCommand sql = new MySqlCommand ("select * from Estudio_Modalidade where ativa != 1", DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand ("select * from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
                 resultado = sql.ExecuteReader();
-                while (resultado.Read())
+                if (resultado.Read())
                     Console.WriteLine(resultado["descricaoModalidade"].ToString());
-                Console.WriteLine("-------------------------------------------------------");
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                Console.WriteLine("-----------ERRO--------------");
             }
             return resultado;
         }

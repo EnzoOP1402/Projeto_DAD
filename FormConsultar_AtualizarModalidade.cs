@@ -19,14 +19,10 @@ namespace Projeto_DuplinhaFeroz
             //Erro ao carregar todos os nomes de modalidades cadastradas no banco - resolver!!!
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            BoxDescricaoCA.Items.Clear();
             Modalidade cad = new Modalidade();
             MySqlDataReader r = cad.consultarTodasModalidades();//Há algum problema na chamada desse método pois ele está retornando um valor nulo
-            string item = "";
             while (r.Read())//null -> erro
-                Console.WriteLine("-----------------\n"+r["descricaoModalidade"].ToString());
-                item = r["descricaoModalidade"].ToString();
-                BoxDescricaoCA.Items.Add(item);
+                BoxDescricaoCA.Items.Add(r["descricaoModalidade"].ToString());
             DAO_Conexao.con.Close();
             if (p == 1)
             {
