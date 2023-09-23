@@ -106,12 +106,10 @@ namespace Projeto_DuplinhaFeroz
                 resultado = sql.ExecuteReader();
                 if (resultado.Read())
                     Console.WriteLine(resultado["descricaoModalidade"].ToString());
-                Console.WriteLine("-------------------------------------------------------");
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                Console.WriteLine("-----------ERRO--------------");
             }
             return resultado;
         }
