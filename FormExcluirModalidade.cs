@@ -18,7 +18,7 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Modalidade cad = new Modalidade();
-            MySqlDataReader r = cad.consultarTodasModalidades();//Há algum problema na chamada desse método pois ele está retornando um valor nulo
+            MySqlDataReader r = cad.consultarTodasModalidades();
             Console.WriteLine(r);
             while (r.Read())
                 Console.WriteLine("-----------------\n" + r["descricaoModalidade"].ToString());
