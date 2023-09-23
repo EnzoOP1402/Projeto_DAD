@@ -19,14 +19,13 @@ namespace Projeto_DuplinhaFeroz
             //Erro ao carregar todos os nomes de modalidades cadastradas no banco - resolver!!!
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            BoxDescricaoCA.Items.Clear();
             Modalidade cad = new Modalidade();
             MySqlDataReader r = cad.consultarTodasModalidades();//Há algum problema na chamada desse método pois ele está retornando um valor nulo
-            string item = "";
-            while (r.Read())//null -> erro
+            Console.WriteLine(r);
+            while (r.Read())
                 Console.WriteLine("-----------------\n"+r["descricaoModalidade"].ToString());
-                item = r["descricaoModalidade"].ToString();
-                BoxDescricaoCA.Items.Add(item);
+                BoxDescricaoCA.Items.Add(r["descricaoModalidade"].ToString());            
+            Console.WriteLine("-----------FIM--------------");
             DAO_Conexao.con.Close();
             if (p == 1)
             {
@@ -45,6 +44,7 @@ namespace Projeto_DuplinhaFeroz
         {
             if(BoxDescricaoCA.Text != "")
             {
+                
                 if (op == 1)
                 {
                     Modalidade m = new Modalidade(BoxDescricaoCA.Text.ToString());
@@ -58,11 +58,27 @@ namespace Projeto_DuplinhaFeroz
                         txtQtdeAlunosCA.Enabled = false;
                         txtQtdeAulasCA.Enabled = false;
                     }
+                    DAO_Conexao.con.Close();
                 }
 
                 if(op == 2)
                 {
-                    //fazer o atualizar
+                    float Preco = float.Parse(txtPrecoCA.Text);
+                    int qtdeAulas = int.Parse(txtQtdeAulasCA.Text);
+                    int qtdeAlunos = int.Parse(txtQtdeAlunosCA.Text);
+                    Modalidade m = new Modalidade(BoxDescricaoCA.Text.ToString(), Preco, qtdeAlunos, qtdeAulas);
+                    if (m.atualizarModalidade(BoxDescricaoCA.Text))
+                    {
+                        MessageBox.Show("Modalidade atualizada com sucesso!");
+                        BoxDescricaoCA.Text = "";
+                        txtPrecoCA.Text = "";
+                        txtQtdeAlunosCA.Text = "";
+                        txtQtdeAulasCA.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar. Tente novamente.");
+                    }
                 }
             }
             else
@@ -72,13 +88,19 @@ namespace Projeto_DuplinhaFeroz
         }
 
         private void BoxDescricaoCA_SelectedIndexChanged(object sender, EventArgs e)
-        {/*
-            BoxDescricaoCA.Items.Clear();
-            Modalidade cad = new Modalidade();
-            MySqlDataReader r = cad.consultarTodasModalidades();
-            while (r.Read())
-                BoxDescricaoCA.Items.Add(r["descricaoModalidade"].ToString());
-            DAO_Conexao.con.Close();*/
+        {
+            if (op == 2)
+            {
+                Modalidade m = new Modalidade(BoxDescricaoCA.Text.ToString());
+                MySqlDataReader r = m.consultarModalidade();
+                if (r.Read())
+                {
+                    txtPrecoCA.Text = r["precoModalidade"].ToString();
+                    txtQtdeAlunosCA.Text = r["qtdeAlunos"].ToString();
+                    txtQtdeAulasCA.Text = r["qtdeAulas"].ToString();
+                }
+                DAO_Conexao.con.Close();
+            }
         }
     }
 }

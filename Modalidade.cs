@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,13 +34,13 @@ namespace Projeto_DuplinhaFeroz
 
         public bool cadastrarModalidade()
         {
-            bool cad = false;
+            bool resultado = false;
             try
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand sql = new MySqlCommand("insert into Estudio_Modalidade (descricaoModalidade, precoModalidade, qtdeAlunos, qtdeAulas) values ('"+Descricao+"',"+Preco+","+qtde_alunos+","+qtde_aulas+")",DAO_Conexao.con);
                 sql.ExecuteNonQuery();
-                cad = true;
+                resultado = true;
             }
             catch(Exception ex)
             {
@@ -49,19 +50,19 @@ namespace Projeto_DuplinhaFeroz
             {
                 DAO_Conexao.con.Close();
             }
-            return cad;
+            return resultado;
         }
 
         public bool excluirModalidade(string desc)
         {
-            bool cad = false;
+            bool resultado = false;
 
             try
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set ativa = 1 where descricaoModalidade = '"+desc+"'",DAO_Conexao.con);
                 sql.ExecuteNonQuery();
-                cad = true;
+                resultado = true;
             }
             catch(Exception ex)
             {
@@ -70,7 +71,28 @@ namespace Projeto_DuplinhaFeroz
             finally{
                 DAO_Conexao.con.Close();
             }
-            return cad;
+            return resultado;
+        }
+
+        public bool atualizarModalidade(string desc)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade = '"+Descricao+"', qtdeAulas = "+qtde_aulas+", qtdeAlunos = "+qtde_alunos+", precoModalidade = "+Preco+" where descricaoModalidade = '"+desc+"'",DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine (ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
         }
 
         public MySqlDataReader consultarTodasModalidades()
@@ -80,9 +102,9 @@ namespace Projeto_DuplinhaFeroz
             {
                 DAO_Conexao.con.Open();
                 Console.WriteLine("-------------------------------------------------------");
-                MySqlCommand sql = new MySqlCommand ("select * from Estudio_Modalidade where ativa != 1", DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand ("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
                 resultado = sql.ExecuteReader();
-                while (resultado.Read())
+                if (resultado.Read())
                     Console.WriteLine(resultado["descricaoModalidade"].ToString());
                 Console.WriteLine("-------------------------------------------------------");
             }
@@ -93,6 +115,31 @@ namespace Projeto_DuplinhaFeroz
             }
             return resultado;
         }
+
+        //Tentatica de fazer um método em formato de array para preencher os combobox das páginas de excluir, atualizar e consultar
+        /*public ArrayList consultarTodasModalidadesArray()
+        {
+            ArrayList lista = new ArrayList();
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                Console.WriteLine("-------------------------------------------------------");
+                MySqlCommand sql = new MySqlCommand("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
+                resultado = sql.ExecuteReader();
+                while (resultado.Read())
+                    Console.WriteLine(resultado["descricaoModalidade"].ToString());
+                    lista.Add(resultado["descricaoModalidade"].ToString());
+                Console.WriteLine(lista);
+                Console.WriteLine("-------------------------------------------------------");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return lista;
+        }*/
 
         public MySqlDataReader consultarModalidade()
         {
