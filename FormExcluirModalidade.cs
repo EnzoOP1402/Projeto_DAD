@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,11 +18,14 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Modalidade cad = new Modalidade();
-            MySqlDataReader r = cad.consultarTodasModalidades();
-            BoxExcluir.Items.Clear();
+            MySqlDataReader r = cad.consultarTodasModalidades();//Há algum problema na chamada desse método pois ele está retornando um valor nulo
+            Console.WriteLine(r);
             while (r.Read())
-                BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
+                Console.WriteLine("-----------------\n" + r["descricaoModalidade"].ToString());
+            BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
+            Console.WriteLine("-----------FIM--------------");
             DAO_Conexao.con.Close();
+            ArrayList lista = new ArrayList();
         }
 
         private void btnExcluirModalidade_Click(object sender, EventArgs e)
@@ -32,7 +36,7 @@ namespace Projeto_DuplinhaFeroz
                 if (m.excluirModalidade(BoxExcluir.Text))
                 {
                     MessageBox.Show("Modalidade excluída com sucesso!");
-
+                    BoxExcluir.Text = "";
                     BoxExcluir.Items.Clear();
                     Modalidade cad = new Modalidade();
                     MySqlDataReader r = m.consultarTodasModalidades();
