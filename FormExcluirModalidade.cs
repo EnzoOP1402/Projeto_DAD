@@ -19,11 +19,8 @@ namespace Projeto_DuplinhaFeroz
             InitializeComponent();
             Modalidade cad = new Modalidade();
             MySqlDataReader r = cad.consultarTodasModalidades();
-            Console.WriteLine(r);
             while (r.Read())
-                Console.WriteLine("-----------------\n" + r["descricaoModalidade"].ToString());
-            BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
-            Console.WriteLine("-----------FIM--------------");
+                BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
             DAO_Conexao.con.Close();
             ArrayList lista = new ArrayList();
         }

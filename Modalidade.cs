@@ -101,11 +101,8 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                Console.WriteLine("-------------------------------------------------------");
                 MySqlCommand sql = new MySqlCommand ("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
                 resultado = sql.ExecuteReader();
-                if (resultado.Read())
-                    Console.WriteLine(resultado["descricaoModalidade"].ToString());
             }
             catch(Exception ex)
             {
@@ -113,31 +110,6 @@ namespace Projeto_DuplinhaFeroz
             }
             return resultado;
         }
-
-        //Tentatica de fazer um método em formato de array para preencher os combobox das páginas de excluir, atualizar e consultar
-        /*public ArrayList consultarTodasModalidadesArray()
-        {
-            ArrayList lista = new ArrayList();
-            MySqlDataReader resultado = null;
-            try
-            {
-                DAO_Conexao.con.Open();
-                Console.WriteLine("-------------------------------------------------------");
-                MySqlCommand sql = new MySqlCommand("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
-                resultado = sql.ExecuteReader();
-                while (resultado.Read())
-                    Console.WriteLine(resultado["descricaoModalidade"].ToString());
-                    lista.Add(resultado["descricaoModalidade"].ToString());
-                Console.WriteLine(lista);
-                Console.WriteLine("-------------------------------------------------------");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine("-----------ERRO--------------");
-            }
-            return lista;
-        }*/
 
         public MySqlDataReader consultarModalidade()
         {

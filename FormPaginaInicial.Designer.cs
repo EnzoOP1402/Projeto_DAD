@@ -67,8 +67,8 @@ namespace Projeto_DuplinhaFeroz
             // arquivoToolStripMenuItem
             // 
             this.arquivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrarAlunoToolStripMenuItem,
             this.cadastrarLoginToolStripMenuItem,
+            this.cadastrarAlunoToolStripMenuItem,
             this.atualizarAlunoToolStripMenuItem,
             this.excluirToolStripMenuItem,
             this.cadastrarModalidadeToolStripMenuItem,
@@ -157,9 +157,9 @@ namespace Projeto_DuplinhaFeroz
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(227, 151);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(924, 370);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -168,7 +168,7 @@ namespace Projeto_DuplinhaFeroz
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(359, 214);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(232, 28);
             this.button1.TabIndex = 4;
@@ -199,7 +199,7 @@ namespace Projeto_DuplinhaFeroz
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(419, 161);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(172, 22);
@@ -209,7 +209,7 @@ namespace Projeto_DuplinhaFeroz
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(419, 114);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(172, 22);
             this.textBox1.TabIndex = 0;
@@ -224,7 +224,7 @@ namespace Projeto_DuplinhaFeroz
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormPaginaInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

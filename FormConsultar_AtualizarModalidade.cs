@@ -16,16 +16,12 @@ namespace Projeto_DuplinhaFeroz
         int op = 0;
         public FormCadastrar_AtualizarModalidade(int p)
         {
-            //Erro ao carregar todos os nomes de modalidades cadastradas no banco - resolver!!!
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             Modalidade cad = new Modalidade();
-            MySqlDataReader r = cad.consultarTodasModalidades();//Há algum problema na chamada desse método pois ele está retornando um valor nulo
-            Console.WriteLine(r);
+            MySqlDataReader r = cad.consultarTodasModalidades();
             while (r.Read())
-                Console.WriteLine("-----------------\n"+r["descricaoModalidade"].ToString());
-                BoxDescricaoCA.Items.Add(r["descricaoModalidade"].ToString());            
-            Console.WriteLine("-----------FIM--------------");
+                BoxDescricaoCA.Items.Add(r["descricaoModalidade"].ToString());
             DAO_Conexao.con.Close();
             if (p == 1)
             {
@@ -66,7 +62,8 @@ namespace Projeto_DuplinhaFeroz
                     float Preco = float.Parse(txtPrecoCA.Text);
                     int qtdeAulas = int.Parse(txtQtdeAulasCA.Text);
                     int qtdeAlunos = int.Parse(txtQtdeAlunosCA.Text);
-                    Modalidade m = new Modalidade(BoxDescricaoCA.Text.ToString(), Preco, qtdeAlunos, qtdeAulas);
+                    string desc = BoxDescricaoCA.Text.ToString();
+                    Modalidade m = new Modalidade(desc, Preco, qtdeAlunos, qtdeAulas);
                     if (m.atualizarModalidade(BoxDescricaoCA.Text))
                     {
                         MessageBox.Show("Modalidade atualizada com sucesso!");
@@ -93,7 +90,7 @@ namespace Projeto_DuplinhaFeroz
             {
                 Modalidade m = new Modalidade(BoxDescricaoCA.Text.ToString());
                 MySqlDataReader r = m.consultarModalidade();
-                if (r.Read())
+                while (r.Read())
                 {
                     txtPrecoCA.Text = r["precoModalidade"].ToString();
                     txtQtdeAlunosCA.Text = r["qtdeAlunos"].ToString();
