@@ -155,8 +155,9 @@ namespace Projeto_DuplinhaFeroz
             this.btnAtivar.Name = "btnAtivar";
             this.btnAtivar.Size = new System.Drawing.Size(525, 23);
             this.btnAtivar.TabIndex = 10;
-            this.btnAtivar.Text = "Ativar";
+            this.btnAtivar.Text = "Reativar";
             this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
             // 
             // FormCadastrar_AtualizarModalidade
             // 

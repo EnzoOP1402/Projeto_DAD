@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,9 +81,8 @@ namespace Projeto_DuplinhaFeroz
             bool resultado = false;
             try
             {
-                int ativa = 0;
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade = '"+Descricao+"', qtdeAulas = "+qtde_aulas+", qtdeAlunos = "+qtde_alunos+", precoModalidade = "+Preco+" where descricaoModalidade = '"+desc+"', ativa = "+ativa,DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade = '"+Descricao+"', qtdeAulas = "+qtde_aulas+", qtdeAlunos = "+qtde_alunos+", precoModalidade = "+Preco+" where descricaoModalidade = '"+desc+"'",DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 resultado = true;
             }
@@ -112,6 +113,22 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
+        public MySqlDataReader consultarModalidadesAtivas()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
+                resultado = sql.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return resultado;
+        }
+
         public MySqlDataReader consultarModalidade()
         {
             MySqlDataReader resultado = null;
@@ -128,18 +145,50 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-        public MySqlDataReader consultaAtiva(string desc)
+        public int consultaAtiva()
         {
             MySqlDataReader r = null;
+            int r2 = 0;
             try
             {
-                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Modalidade where descricaoModalidade = '"+desc+"'");
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Modalidade where descricaoModalidade = '" + Descricao + "'",DAO_Conexao.con);
                 r = comando.ExecuteReader();
-            }catch(Exception ex)
+                if (r.Read())
+                {
+                    r2 = int.Parse(r["ativa"].ToString());
+                }
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return r;
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return r2;
+        }
+
+        public bool setarAtiva(string desc)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("update Estudio_Modalidade set ativa = 0 where descricaoModalidade = '" + desc + "'", DAO_Conexao.con);
+                comando.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch(Exception ex)
+            {
+                Console.Write (ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
         }
 
         public string Descricao1 { get => Descricao; set => Descricao = value; }

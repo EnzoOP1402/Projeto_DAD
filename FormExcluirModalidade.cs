@@ -18,7 +18,7 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Modalidade cad = new Modalidade();
-            MySqlDataReader r = cad.consultarTodasModalidades();
+            MySqlDataReader r = cad.consultarModalidadesAtivas();
             while (r.Read())
                 BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
             DAO_Conexao.con.Close();
@@ -36,7 +36,7 @@ namespace Projeto_DuplinhaFeroz
                     BoxExcluir.Text = "";
                     BoxExcluir.Items.Clear();
                     Modalidade cad = new Modalidade();
-                    MySqlDataReader r = m.consultarTodasModalidades();
+                    MySqlDataReader r = m.consultarModalidadesAtivas();
                     while (r.Read())
                         BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
                     DAO_Conexao.con.Close();
