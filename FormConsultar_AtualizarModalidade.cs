@@ -114,6 +114,10 @@ namespace Projeto_DuplinhaFeroz
                 {
                     btnAtivar.Enabled = true;
                 }
+                else
+                {
+                    btnAtivar.Enabled = false;
+                }
             }
         }
 
