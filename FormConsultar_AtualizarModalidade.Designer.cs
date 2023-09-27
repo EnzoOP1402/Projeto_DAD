@@ -39,11 +39,13 @@ namespace Projeto_DuplinhaFeroz
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAtivar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnAtivar);
             this.groupBox2.Controls.Add(this.BoxDescricaoCA);
             this.groupBox2.Controls.Add(this.btnMostrar_AtualizarModalidade);
             this.groupBox2.Controls.Add(this.txtQtdeAulasCA);
@@ -57,7 +59,7 @@ namespace Projeto_DuplinhaFeroz
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(595, 288);
+            this.groupBox2.Size = new System.Drawing.Size(595, 327);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modalidades";
@@ -147,11 +149,20 @@ namespace Projeto_DuplinhaFeroz
             this.label2.TabIndex = 1;
             this.label2.Text = "Preço:";
             // 
+            // btnAtivar
+            // 
+            this.btnAtivar.Location = new System.Drawing.Point(25, 271);
+            this.btnAtivar.Name = "btnAtivar";
+            this.btnAtivar.Size = new System.Drawing.Size(525, 23);
+            this.btnAtivar.TabIndex = 10;
+            this.btnAtivar.Text = "Ativar";
+            this.btnAtivar.UseVisualStyleBackColor = true;
+            // 
             // FormCadastrar_AtualizarModalidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 315);
+            this.ClientSize = new System.Drawing.Size(629, 355);
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastrar_AtualizarModalidade";
@@ -175,5 +186,6 @@ namespace Projeto_DuplinhaFeroz
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox BoxDescricaoCA;
+        private System.Windows.Forms.Button btnAtivar;
     }
 }

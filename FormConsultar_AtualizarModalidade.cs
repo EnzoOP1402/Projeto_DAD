@@ -14,6 +14,7 @@ namespace Projeto_DuplinhaFeroz
     public partial class FormCadastrar_AtualizarModalidade : Form
     {
         int op = 0;
+        string descricaoAtualizar = "";
         public FormCadastrar_AtualizarModalidade(int p)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Projeto_DuplinhaFeroz
             if (p == 1)
             {
                 btnMostrar_AtualizarModalidade.Text = "Consultar";
+                btnAtivar.Visible = false;
                 op = 1;
             }
             else
@@ -64,7 +66,7 @@ namespace Projeto_DuplinhaFeroz
                     int qtdeAlunos = int.Parse(txtQtdeAlunosCA.Text);
                     string desc = BoxDescricaoCA.Text.ToString();
                     Modalidade m = new Modalidade(desc, Preco, qtdeAlunos, qtdeAulas);
-                    if (m.atualizarModalidade(BoxDescricaoCA.Text))
+                    if (m.atualizarModalidade(descricaoAtualizar))
                     {
                         MessageBox.Show("Modalidade atualizada com sucesso!");
                         BoxDescricaoCA.Text = "";
@@ -95,9 +97,11 @@ namespace Projeto_DuplinhaFeroz
                     txtPrecoCA.Text = r["precoModalidade"].ToString();
                     txtQtdeAlunosCA.Text = r["qtdeAlunos"].ToString();
                     txtQtdeAulasCA.Text = r["qtdeAulas"].ToString();
+                    descricaoAtualizar = BoxDescricaoCA.Text;
                 }
                 DAO_Conexao.con.Close();
             }
         }
+
     }
 }

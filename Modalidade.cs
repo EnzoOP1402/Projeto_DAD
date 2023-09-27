@@ -79,8 +79,9 @@ namespace Projeto_DuplinhaFeroz
             bool resultado = false;
             try
             {
+                int ativa = 0;
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade = '"+Descricao+"', qtdeAulas = "+qtde_aulas+", qtdeAlunos = "+qtde_alunos+", precoModalidade = "+Preco+" where descricaoModalidade = '"+desc+"'",DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade = '"+Descricao+"', qtdeAulas = "+qtde_aulas+", qtdeAlunos = "+qtde_alunos+", precoModalidade = "+Preco+" where descricaoModalidade = '"+desc+"', ativa = "+ativa,DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 resultado = true;
             }
@@ -101,7 +102,7 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand ("select descricaoModalidade from Estudio_Modalidade where ativa = 0", DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand ("select descricaoModalidade from Estudio_Modalidade", DAO_Conexao.con);
                 resultado = sql.ExecuteReader();
             }
             catch(Exception ex)
@@ -125,6 +126,20 @@ namespace Projeto_DuplinhaFeroz
                 Console.WriteLine("-----------ERRO--------------");
             }
             return resultado;
+        }
+
+        public MySqlDataReader consultaAtiva(string desc)
+        {
+            MySqlDataReader r = null;
+            try
+            {
+                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Modalidade where descricaoModalidade = '"+desc+"'");
+                r = comando.ExecuteReader();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return r;
         }
 
         public string Descricao1 { get => Descricao; set => Descricao = value; }
