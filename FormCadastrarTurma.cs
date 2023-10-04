@@ -16,7 +16,6 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
         }
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             int modalidade = int.Parse(txtModalidadeTurma.Text);
