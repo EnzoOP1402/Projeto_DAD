@@ -48,6 +48,7 @@ namespace Projeto_DuplinhaFeroz
                 if (r.Read())
                 {
                     result = int.Parse(r["idEstudio_Modalidade"].ToString());
+                    Console.WriteLine(">>>>"+result);
                 }
             }
             catch (Exception ex)
@@ -68,7 +69,9 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("insert into DAO_Estudio_Turma (idModalidade, professorTurma, diasemanaTurma, horaTurma, nalunosmatriculadosTurma) values  ("+modalidade+", '"+professor+"', '"+dia_semana+"', '"+hora+"',"+qtd_alunos+")",DAO_Conexao.con); 
+                MySqlCommand sql = new MySqlCommand("insert into DAD_Estudio_Turma (idModalidade, professorTurma, diasemanaTurma, horaTurma, nalunosmatriculadosTurma) values  ("+modalidade+", '"+professor+"', '"+dia_semana+"', '"+hora+"',"+qtd_alunos+")",DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                Console.WriteLine("modalidade:"+modalidade+" Professor:"+professor+" Dia:"+dia_semana+" Hora:"+hora+" qtd:"+qtd_alunos);
             }
             catch (Exception ex)
             {
