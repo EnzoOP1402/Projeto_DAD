@@ -55,6 +55,8 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
+
+
         public bool excluirModalidade(string desc)
         {
             bool resultado = false;
