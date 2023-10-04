@@ -18,9 +18,18 @@ namespace Projeto_DuplinhaFeroz
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            int modalidade = int.Parse(txtModalidadeTurma.Text);
-            Turma t = new Turma(txtProfTurma.Text, txtDiaSemanaTurma.Text, txtNalunosTurma.Text, modalidade);
-            
+            Turma t = new Turma();
+            int idmodalidade = t.retornaIdmodalidade(txtModalidadeTurma.Text);
+            Turma t2 = new Turma(txtProfTurma.Text, txtDiaSemanaTurma.Text, mtxtHoraTurma.Text, idmodalidade);
+            try
+            {
+                int qtd = int.Parse(txtNalunosTurma.Text);
+                t2.cadastrarTurma(qtd);
+                MessageBox.Show("Cadastrado com sucesso");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Erro no cadastro");
+            }
         }
     }
 }

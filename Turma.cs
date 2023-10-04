@@ -22,6 +22,11 @@ namespace Projeto_DuplinhaFeroz
             this.modalidade = modalidade;
         }
 
+        public Turma()
+        {
+            
+        }
+
         public Turma(string professor, string dia_semana, string hora, int modalidade)
         {
             this.professor = professor;
@@ -30,6 +35,31 @@ namespace Projeto_DuplinhaFeroz
             this.modalidade = modalidade;
         }
 
+        public int retornaIdmodalidade( string descricao)
+        {
+            int result =0;
+
+            MySqlDataReader r = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select idEstudio_Modalidade from Estudio_Modalidade where descricaoModalidade = '" +descricao + "'", DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    result = int.Parse(r["idEstudio_Modalidade"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
 
         public bool cadastrarTurma(int qtd_alunos)
         {

@@ -39,7 +39,7 @@ namespace Projeto_DuplinhaFeroz
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtModalidadeTurma = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtHoraTurma = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNalunosTurma = new System.Windows.Forms.TextBox();
             this.Turma.SuspendLayout();
@@ -50,7 +50,7 @@ namespace Projeto_DuplinhaFeroz
             // 
             this.Turma.Controls.Add(this.txtNalunosTurma);
             this.Turma.Controls.Add(this.label5);
-            this.Turma.Controls.Add(this.maskedTextBox1);
+            this.Turma.Controls.Add(this.mtxtHoraTurma);
             this.Turma.Controls.Add(this.txtModalidadeTurma);
             this.Turma.Controls.Add(this.btnCadastrar);
             this.Turma.Controls.Add(this.txtDiaSemanaTurma);
@@ -141,14 +141,14 @@ namespace Projeto_DuplinhaFeroz
             this.txtModalidadeTurma.Size = new System.Drawing.Size(208, 20);
             this.txtModalidadeTurma.TabIndex = 10;
             // 
-            // maskedTextBox1
+            // mtxtHoraTurma
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(108, 139);
-            this.maskedTextBox1.Mask = "90:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 11;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtxtHoraTurma.Location = new System.Drawing.Point(108, 139);
+            this.mtxtHoraTurma.Mask = "90:00";
+            this.mtxtHoraTurma.Name = "mtxtHoraTurma";
+            this.mtxtHoraTurma.Size = new System.Drawing.Size(46, 20);
+            this.mtxtHoraTurma.TabIndex = 11;
+            this.mtxtHoraTurma.ValidatingType = typeof(System.DateTime);
             // 
             // label5
             // 
@@ -193,7 +193,7 @@ namespace Projeto_DuplinhaFeroz
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtxtHoraTurma;
         private System.Windows.Forms.TextBox txtModalidadeTurma;
         private System.Windows.Forms.TextBox txtNalunosTurma;
         private System.Windows.Forms.Label label5;
