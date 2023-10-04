@@ -107,5 +107,13 @@ namespace Projeto_DuplinhaFeroz
             f.Show();
             groupBox1.Visible = false;
         }
+
+        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCadastrarTurma f = new FormCadastrarTurma();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
+        }
     }
 }
