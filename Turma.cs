@@ -104,18 +104,43 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool excluirTurma()
+        public bool excluirTurma(int modalidade)
         {
             bool result = false;
 
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("UPDATE DAD_Estudio_Turma set ativa = 1 where idModalidade =" +modalidade, DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                Console.WriteLine(">>>>>modalidade:" + modalidade);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
             return result;
         }
 
         public MySqlDataReader consultarTurma()
         {
-            MySqlDataReader reader = null;
-
-            return reader;
+                MySqlDataReader resultado = null;
+                try
+                {
+                    DAO_Conexao.con.Open();
+                    MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where ativa = 0", DAO_Conexao.con);
+                    resultado = comando.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("-----------ERRO--------------");
+                }
+                return resultado;
         }
 
         public MySqlDataReader consultarTurma01()

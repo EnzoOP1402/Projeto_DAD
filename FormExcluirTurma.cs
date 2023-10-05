@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,28 @@ namespace Projeto_DuplinhaFeroz
         public FormExcluirTurma()
         {
             InitializeComponent();
+            Turma t = new Turma();
+            MySqlDataReader reader = t.consultarTurma();
+            while (reader.Read())
+            {
+                BoxModalidade.Items.Add(reader["idModalidade"].ToString());
+                boxHoraExcluir.Items.Add(reader["horaTurma"].ToString());
+                boxDiaSemanaExcluir.Items.Add(reader["diasemanaTurma"].ToString());
+            }
+            DAO_Conexao.con.Close();
+        }
+
+        private void btnExcluirTurma_Click(object sender, EventArgs e)
+        {
+            try { 
+            int mod = int.Parse(BoxModalidade.SelectedItem.ToString());
+            Turma t = new Turma();
+            t.excluirTurma(mod);
+                MessageBox.Show("Excluido com sucesso!");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir");
+            }
         }
     }
 }

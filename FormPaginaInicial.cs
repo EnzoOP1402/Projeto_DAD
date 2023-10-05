@@ -115,5 +115,13 @@ namespace Projeto_DuplinhaFeroz
             f.Show();
             groupBox1.Visible = false;
         }
+
+        private void exclusãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormExcluirTurma f = new FormExcluirTurma();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
+        }
     }
 }
