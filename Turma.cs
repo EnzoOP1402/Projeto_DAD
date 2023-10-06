@@ -104,14 +104,14 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool excluirTurma(int modalidade)
+        public bool excluirTurma(int modalidade, string diasem, string hora)
         {
             bool result = false;
 
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("UPDATE DAD_Estudio_Turma set ativa = 1 where idModalidade =" +modalidade, DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("UPDATE DAD_Estudio_Turma set ativa = 1 where (idModalidade, diasemanaTurma, horaTurma) value ("+modalidade+",'"+diasem+"','"+hora+"')", DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 Console.WriteLine(">>>>>modalidade:" + modalidade);
             }
@@ -143,11 +143,52 @@ namespace Projeto_DuplinhaFeroz
                 return resultado;
         }
 
-        public MySqlDataReader consultarTurma01()
+        public MySqlDataReader consultarTurma01(int mod)
         {
-            MySqlDataReader reader = null;
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where idModalidade = "+mod, DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
+        }
 
-            return reader;
+        public MySqlDataReader consultarTurma02(string diasem)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where diasemanaTurma = '"+diasem+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurma03(string hora)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where horaTurma = '" + hora + "'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
         }
 
 
