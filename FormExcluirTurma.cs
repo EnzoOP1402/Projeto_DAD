@@ -17,7 +17,7 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Turma t = new Turma();
-            MySqlDataReader reader = t.consultarTurma();
+            MySqlDataReader reader = t.consultarTurmaTodasAtivas();
             while (reader.Read())
             {
                 BoxModalidade.Items.Add(reader["idModalidade"].ToString());
@@ -34,7 +34,7 @@ namespace Projeto_DuplinhaFeroz
                 boxHoraExcluir.Items.Clear();
                 Turma t = new Turma();
             int mod = int.Parse(BoxModalidade.SelectedItem.ToString());
-                MySqlDataReader r2 = t.consultarTurma01(mod);
+                MySqlDataReader r2 = t.consultarTurmaID(mod);
                 while(r2.Read())
                 {
                     boxDiaSemanaExcluir.Items.Add(r2["diasemanaTurma"].ToString());
@@ -42,7 +42,7 @@ namespace Projeto_DuplinhaFeroz
                 }
                 boxHoraExcluir.Items.Clear();
                 DAO_Conexao.con.Close();
-                MySqlDataReader r3 = t.consultarTurma02(boxDiaSemanaExcluir.SelectedItem.ToString());
+                MySqlDataReader r3 = t.consultarTurmaDiaSem(boxDiaSemanaExcluir.SelectedItem.ToString());
                 while (r3.Read())
                 {
                     boxHoraExcluir.Items.Add(r3["horaTurma"].ToString());

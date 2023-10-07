@@ -126,7 +126,7 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public MySqlDataReader consultarTurma()
+        public MySqlDataReader consultarTurmaTodasAtivas()
         {
                 MySqlDataReader resultado = null;
                 try
@@ -143,7 +143,7 @@ namespace Projeto_DuplinhaFeroz
                 return resultado;
         }
 
-        public MySqlDataReader consultarTurma01(int mod)
+        public MySqlDataReader consultarTurmaID(int mod)
         {
             MySqlDataReader resultado = null;
             try
@@ -159,7 +159,7 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-        public MySqlDataReader consultarTurma02(string diasem)
+        public MySqlDataReader consultarTurmaDiaSem(string diasem)
         {
             MySqlDataReader resultado = null;
             try
@@ -175,7 +175,7 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-        public MySqlDataReader consultarTurma03(string hora)
+        public MySqlDataReader consultarTurmaHora(string hora)
         {
             MySqlDataReader resultado = null;
             try
