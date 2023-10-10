@@ -118,9 +118,9 @@ namespace Projeto_DuplinhaFeroz
 
         private void exclusãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormExcluirTurma f = new FormExcluirTurma();
-            f.MdiParent = this;
-            f.Show();
+            FormExcluirTurma f4 = new FormExcluirTurma();
+            f4.MdiParent = this;
+            f4.Show();
             groupBox1.Visible = false;
         }
     }

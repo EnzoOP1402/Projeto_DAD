@@ -17,6 +17,8 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Turma t = new Turma();
+
+            //Consultando todas as turmas ativas e adicionando-as nas comboBox
             MySqlDataReader reader = t.consultarTurmaTodasAtivas();
             while (reader.Read())
             {
@@ -24,35 +26,65 @@ namespace Projeto_DuplinhaFeroz
                 boxHoraExcluir.Items.Add(reader["horaTurma"].ToString());
                 boxDiaSemanaExcluir.Items.Add(reader["diasemanaTurma"].ToString());
             }
-            DAO_Conexao.con.Close();
+            DAO_Conexao.con.Close();//
+
+            /*
+            //Limpando todas as comboBox restantes e consultando todas as turmas com o id do combobox de idModalidade
+            int mod = int.Parse(BoxModalidade.SelectedItem.ToString());
+            boxDiaSemanaExcluir.Items.Clear();
+            boxHoraExcluir.Items.Clear();
+            MySqlDataReader reader2 = t.consultarTurmaID(mod);
+            while (reader2.Read())
+            {
+                boxHoraExcluir.Items.Add(reader2["horaTurma"].ToString());
+                boxDiaSemanaExcluir.Items.Add(reader2["diasemanaTurma"].ToString());
+            }
+            string diasem = boxDiaSemanaExcluir.SelectedItem.ToString();
+            DAO_Conexao.con.Close();//
+
+            //Novamente, limpando todas as combobox restantes e consultando todas as turmas com o diaSemana obtido acima
+            boxHoraExcluir.Items.Clear();
+            MySqlDataReader reader3 = t.consultarTurmaDiaSem(diasem);
+            while (reader3.Read())
+            {
+                boxHoraExcluir.Items.Add(reader3["horaTurma"].ToString());
+            }
+            string hora = boxHoraExcluir.SelectedItem.ToString();
+            DAO_Conexao.con.Close();//
+            */
         }
 
         private void btnExcluirTurma_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
+                Turma t = new Turma();
+                //Limpando todas as comboBox restantes e consultando todas as turmas com o id do combobox de idModalidade
+                int mod = int.Parse(BoxModalidade.SelectedItem.ToString());
                 boxDiaSemanaExcluir.Items.Clear();
                 boxHoraExcluir.Items.Clear();
-                Turma t = new Turma();
-            int mod = int.Parse(BoxModalidade.SelectedItem.ToString());
-                MySqlDataReader r2 = t.consultarTurmaID(mod);
-                while(r2.Read())
+                MySqlDataReader reader2 = t.consultarTurmaID(mod);
+                while (reader2.Read())
                 {
-                    boxDiaSemanaExcluir.Items.Add(r2["diasemanaTurma"].ToString());
-                    boxHoraExcluir.Items.Add(r2["horaTurma"].ToString());
+                    boxHoraExcluir.Items.Add(reader2["horaTurma"].ToString());
+                    boxDiaSemanaExcluir.Items.Add(reader2["diasemanaTurma"].ToString());
                 }
+                string diasem = boxDiaSemanaExcluir.SelectedItem.ToString();
+                DAO_Conexao.con.Close();//
+
+                //Novamente, limpando todas as combobox restantes e consultando todas as turmas com o diaSemana obtido acima
                 boxHoraExcluir.Items.Clear();
-                DAO_Conexao.con.Close();
-                MySqlDataReader r3 = t.consultarTurmaDiaSem(boxDiaSemanaExcluir.SelectedItem.ToString());
-                while (r3.Read())
+                MySqlDataReader reader3 = t.consultarTurmaDiaSem(diasem);
+                while (reader3.Read())
                 {
-                    boxHoraExcluir.Items.Add(r3["horaTurma"].ToString());
+                    boxHoraExcluir.Items.Add(reader3["horaTurma"].ToString());
                 }
-                DAO_Conexao.con.Close();
-                t.excluirTurma(mod);
-                MessageBox.Show("Excluido com sucesso!");
-            }catch(Exception ex)
+                string hora = boxHoraExcluir.SelectedItem.ToString();
+                DAO_Conexao.con.Close();//
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao excluir");
+                MessageBox.Show("Erro");
             }
         }
     }

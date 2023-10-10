@@ -151,6 +151,7 @@ namespace Projeto_DuplinhaFeroz
                 DAO_Conexao.con.Open();
                 MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where idModalidade = "+mod, DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
+                Console.WriteLine(">>>>>" + mod);
             }
             catch (Exception ex)
             {
@@ -167,6 +168,7 @@ namespace Projeto_DuplinhaFeroz
                 DAO_Conexao.con.Open();
                 MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where diasemanaTurma = '"+diasem+"'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
+                Console.WriteLine(">>>>>"+diasem);
             }
             catch (Exception ex)
             {
@@ -183,6 +185,7 @@ namespace Projeto_DuplinhaFeroz
                 DAO_Conexao.con.Open();
                 MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where horaTurma = '" + hora + "'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
+                Console.WriteLine(">>>>>" + hora);
             }
             catch (Exception ex)
             {
