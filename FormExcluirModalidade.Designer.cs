@@ -42,9 +42,9 @@ namespace Projeto_DuplinhaFeroz
             this.groupBox1.Controls.Add(this.btnExcluirModalidade);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(41, 44);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(472, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -54,7 +54,7 @@ namespace Projeto_DuplinhaFeroz
             // 
             this.BoxExcluir.FormattingEnabled = true;
             this.BoxExcluir.Location = new System.Drawing.Point(95, 33);
-            this.BoxExcluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BoxExcluir.Margin = new System.Windows.Forms.Padding(4);
             this.BoxExcluir.Name = "BoxExcluir";
             this.BoxExcluir.Size = new System.Drawing.Size(368, 24);
             this.BoxExcluir.TabIndex = 3;
@@ -62,7 +62,7 @@ namespace Projeto_DuplinhaFeroz
             // btnExcluirModalidade
             // 
             this.btnExcluirModalidade.Location = new System.Drawing.Point(12, 76);
-            this.btnExcluirModalidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExcluirModalidade.Margin = new System.Windows.Forms.Padding(4);
             this.btnExcluirModalidade.Name = "btnExcluirModalidade";
             this.btnExcluirModalidade.Size = new System.Drawing.Size(452, 28);
             this.btnExcluirModalidade.TabIndex = 2;
@@ -80,14 +80,14 @@ namespace Projeto_DuplinhaFeroz
             this.label1.TabIndex = 0;
             this.label1.Text = "Descrição:";
             // 
-            // ExcluirModalidade
+            // FormExcluirModalidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 224);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "ExcluirModalidade";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "FormExcluirModalidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ExcluirModalidade";
             this.groupBox1.ResumeLayout(false);

@@ -13,8 +13,7 @@ namespace Projeto_DuplinhaFeroz
 {
     public partial class FormExcluirTurma : Form
     {
-        string mod;
-        string diasem, hora;
+        string mod, diasem, hora;
         public FormExcluirTurma()
         {
             InitializeComponent();
@@ -78,6 +77,9 @@ namespace Projeto_DuplinhaFeroz
                 if(t.excluirTurma(id))
                 {
                     MessageBox.Show("Excluido com sucesso!");
+                    BoxModalidade.SelectedIndex = -1;
+                    boxDiaSemanaExcluir.SelectedIndex = -1;
+                    boxHoraExcluir.SelectedIndex = -1;
                 }
                 else
                 {

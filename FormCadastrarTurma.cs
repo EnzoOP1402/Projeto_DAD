@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,16 @@ namespace Projeto_DuplinhaFeroz
         public FormCadastrarTurma()
         {
             InitializeComponent();
+            Modalidade cad = new Modalidade();
+            MySqlDataReader r = cad.consultarModalidadesAtivas();
+            while (r.Read())
+                BoxCadastrarTurma.Items.Add(r["descricaoModalidade"].ToString());
+            DAO_Conexao.con.Close();
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             Turma t = new Turma();
-            int idmodalidade = t.retornaIdmodalidade(txtModalidadeTurma.Text);
+            int idmodalidade = t.retornaIdmodalidade(BoxCadastrarTurma.Text);
             Turma t2 = new Turma(txtProfTurma.Text, txtDiaSemanaTurma.Text, mtxtHoraTurma.Text, idmodalidade);
             try
             {
@@ -30,6 +36,19 @@ namespace Projeto_DuplinhaFeroz
             {
                 MessageBox.Show("Erro no cadastro");
             }
+        }
+
+        private void BoxCadastrarTurma_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtNalunosTurma.Text = "";
+            Modalidade m = new Modalidade(BoxCadastrarTurma.Text.ToString());
+            MySqlDataReader r = m.consultarModalidade();
+            if (r.Read())
+            {
+                txtNalunosTurma.Text = r["qtdeAlunos"].ToString();
+                txtNalunosTurma.Enabled = false;
+            }
+            DAO_Conexao.con.Close();
         }
     }
 }

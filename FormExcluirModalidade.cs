@@ -22,7 +22,6 @@ namespace Projeto_DuplinhaFeroz
             while (r.Read())
                 BoxExcluir.Items.Add(r["descricaoModalidade"].ToString());
             DAO_Conexao.con.Close();
-            ArrayList lista = new ArrayList();
         }
 
         private void btnExcluirModalidade_Click(object sender, EventArgs e)

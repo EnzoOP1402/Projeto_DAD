@@ -30,6 +30,10 @@ namespace Projeto_DuplinhaFeroz
         private void InitializeComponent()
         {
             this.Turma = new System.Windows.Forms.GroupBox();
+            this.BoxCadastrarTurma = new System.Windows.Forms.ComboBox();
+            this.txtNalunosTurma = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.mtxtHoraTurma = new System.Windows.Forms.MaskedTextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtDiaSemanaTurma = new System.Windows.Forms.TextBox();
             this.txtProfTurma = new System.Windows.Forms.TextBox();
@@ -38,20 +42,16 @@ namespace Projeto_DuplinhaFeroz
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtModalidadeTurma = new System.Windows.Forms.TextBox();
-            this.mtxtHoraTurma = new System.Windows.Forms.MaskedTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtNalunosTurma = new System.Windows.Forms.TextBox();
             this.Turma.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Turma
             // 
+            this.Turma.Controls.Add(this.BoxCadastrarTurma);
             this.Turma.Controls.Add(this.txtNalunosTurma);
             this.Turma.Controls.Add(this.label5);
             this.Turma.Controls.Add(this.mtxtHoraTurma);
-            this.Turma.Controls.Add(this.txtModalidadeTurma);
             this.Turma.Controls.Add(this.btnCadastrar);
             this.Turma.Controls.Add(this.txtDiaSemanaTurma);
             this.Turma.Controls.Add(this.txtProfTurma);
@@ -59,18 +59,58 @@ namespace Projeto_DuplinhaFeroz
             this.Turma.Controls.Add(this.label3);
             this.Turma.Controls.Add(this.label2);
             this.Turma.Controls.Add(this.label1);
-            this.Turma.Location = new System.Drawing.Point(12, 12);
+            this.Turma.Location = new System.Drawing.Point(16, 15);
+            this.Turma.Margin = new System.Windows.Forms.Padding(4);
             this.Turma.Name = "Turma";
-            this.Turma.Size = new System.Drawing.Size(355, 203);
+            this.Turma.Padding = new System.Windows.Forms.Padding(4);
+            this.Turma.Size = new System.Drawing.Size(473, 250);
             this.Turma.TabIndex = 0;
             this.Turma.TabStop = false;
             this.Turma.Text = "groupBox1";
             // 
+            // BoxCadastrarTurma
+            // 
+            this.BoxCadastrarTurma.FormattingEnabled = true;
+            this.BoxCadastrarTurma.Location = new System.Drawing.Point(144, 39);
+            this.BoxCadastrarTurma.Name = "BoxCadastrarTurma";
+            this.BoxCadastrarTurma.Size = new System.Drawing.Size(276, 24);
+            this.BoxCadastrarTurma.TabIndex = 14;
+            this.BoxCadastrarTurma.SelectedIndexChanged += new System.EventHandler(this.BoxCadastrarTurma_SelectedIndexChanged);
+            // 
+            // txtNalunosTurma
+            // 
+            this.txtNalunosTurma.Location = new System.Drawing.Point(367, 171);
+            this.txtNalunosTurma.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNalunosTurma.Name = "txtNalunosTurma";
+            this.txtNalunosTurma.Size = new System.Drawing.Size(53, 22);
+            this.txtNalunosTurma.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(275, 174);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "N° de Alunos:";
+            // 
+            // mtxtHoraTurma
+            // 
+            this.mtxtHoraTurma.Location = new System.Drawing.Point(144, 171);
+            this.mtxtHoraTurma.Margin = new System.Windows.Forms.Padding(4);
+            this.mtxtHoraTurma.Mask = "90:00";
+            this.mtxtHoraTurma.Name = "mtxtHoraTurma";
+            this.mtxtHoraTurma.Size = new System.Drawing.Size(60, 22);
+            this.mtxtHoraTurma.TabIndex = 11;
+            this.mtxtHoraTurma.ValidatingType = typeof(System.DateTime);
+            // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(6, 174);
+            this.btnCadastrar.Location = new System.Drawing.Point(8, 214);
+            this.btnCadastrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(343, 23);
+            this.btnCadastrar.Size = new System.Drawing.Size(457, 28);
             this.btnCadastrar.TabIndex = 9;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
@@ -78,101 +118,78 @@ namespace Projeto_DuplinhaFeroz
             // 
             // txtDiaSemanaTurma
             // 
-            this.txtDiaSemanaTurma.Location = new System.Drawing.Point(108, 101);
+            this.txtDiaSemanaTurma.Location = new System.Drawing.Point(144, 124);
+            this.txtDiaSemanaTurma.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiaSemanaTurma.Name = "txtDiaSemanaTurma";
-            this.txtDiaSemanaTurma.Size = new System.Drawing.Size(208, 20);
+            this.txtDiaSemanaTurma.Size = new System.Drawing.Size(276, 22);
             this.txtDiaSemanaTurma.TabIndex = 6;
             // 
             // txtProfTurma
             // 
-            this.txtProfTurma.Location = new System.Drawing.Point(108, 66);
+            this.txtProfTurma.Location = new System.Drawing.Point(144, 81);
+            this.txtProfTurma.Margin = new System.Windows.Forms.Padding(4);
             this.txtProfTurma.Name = "txtProfTurma";
-            this.txtProfTurma.Size = new System.Drawing.Size(208, 20);
+            this.txtProfTurma.Size = new System.Drawing.Size(276, 22);
             this.txtProfTurma.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 139);
+            this.label4.Location = new System.Drawing.Point(92, 171);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Hora:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 101);
+            this.label3.Location = new System.Drawing.Point(25, 124);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(104, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Dia da Semana:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 69);
+            this.label2.Location = new System.Drawing.Point(56, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(65, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Professor";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 32);
+            this.label1.Location = new System.Drawing.Point(49, 39);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Modalidade:";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 221);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 272);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(355, 182);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(473, 224);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // txtModalidadeTurma
-            // 
-            this.txtModalidadeTurma.Location = new System.Drawing.Point(108, 32);
-            this.txtModalidadeTurma.Name = "txtModalidadeTurma";
-            this.txtModalidadeTurma.Size = new System.Drawing.Size(208, 20);
-            this.txtModalidadeTurma.TabIndex = 10;
-            // 
-            // mtxtHoraTurma
-            // 
-            this.mtxtHoraTurma.Location = new System.Drawing.Point(108, 139);
-            this.mtxtHoraTurma.Mask = "90:00";
-            this.mtxtHoraTurma.Name = "mtxtHoraTurma";
-            this.mtxtHoraTurma.Size = new System.Drawing.Size(46, 20);
-            this.mtxtHoraTurma.TabIndex = 11;
-            this.mtxtHoraTurma.ValidatingType = typeof(System.DateTime);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(214, 142);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "N° de Alunos:";
-            // 
-            // txtNalunosTurma
-            // 
-            this.txtNalunosTurma.Location = new System.Drawing.Point(292, 139);
-            this.txtNalunosTurma.Name = "txtNalunosTurma";
-            this.txtNalunosTurma.Size = new System.Drawing.Size(41, 20);
-            this.txtNalunosTurma.TabIndex = 13;
             // 
             // FormCadastrarTurma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 425);
+            this.ClientSize = new System.Drawing.Size(513, 523);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Turma);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastrarTurma";
             this.Text = "FormCadastrarTurma";
             this.Turma.ResumeLayout(false);
@@ -194,8 +211,8 @@ namespace Projeto_DuplinhaFeroz
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.MaskedTextBox mtxtHoraTurma;
-        private System.Windows.Forms.TextBox txtModalidadeTurma;
         private System.Windows.Forms.TextBox txtNalunosTurma;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox BoxCadastrarTurma;
     }
 }
