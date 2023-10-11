@@ -73,6 +73,7 @@ namespace Projeto_DuplinhaFeroz
             this.boxHoraExcluir.Name = "boxHoraExcluir";
             this.boxHoraExcluir.Size = new System.Drawing.Size(121, 21);
             this.boxHoraExcluir.TabIndex = 5;
+            this.boxHoraExcluir.SelectedIndexChanged += new System.EventHandler(this.boxHoraExcluir_SelectedIndexChanged);
             // 
             // boxDiaSemanaExcluir
             // 
@@ -81,6 +82,7 @@ namespace Projeto_DuplinhaFeroz
             this.boxDiaSemanaExcluir.Name = "boxDiaSemanaExcluir";
             this.boxDiaSemanaExcluir.Size = new System.Drawing.Size(121, 21);
             this.boxDiaSemanaExcluir.TabIndex = 4;
+            this.boxDiaSemanaExcluir.SelectedIndexChanged += new System.EventHandler(this.boxDiaSemanaExcluir_SelectedIndexChanged);
             // 
             // BoxModalidade
             // 
@@ -89,6 +91,7 @@ namespace Projeto_DuplinhaFeroz
             this.BoxModalidade.Name = "BoxModalidade";
             this.BoxModalidade.Size = new System.Drawing.Size(121, 21);
             this.BoxModalidade.TabIndex = 3;
+            this.BoxModalidade.SelectedIndexChanged += new System.EventHandler(this.BoxModalidade_SelectedIndexChanged);
             // 
             // label3
             // 

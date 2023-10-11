@@ -104,16 +104,17 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool excluirTurma(int modalidade, string diasem, string hora)
+        public bool excluirTurma(int id)
         {
             bool result = false;
-
+Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("UPDATE DAD_Estudio_Turma set ativa = 1 where (idModalidade, diasemanaTurma, horaTurma) value ("+modalidade+",'"+diasem+"','"+hora+"')", DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("UPDATE DAD_Estudio_Turma set ativa = 1 where idDAD_Estudio_Turma = "+id+"", DAO_Conexao.con);
                 sql.ExecuteNonQuery();
-                Console.WriteLine(">>>>>modalidade:" + modalidade);
+                result = true;
+                
             }
             catch (Exception ex)
             {
@@ -143,13 +144,30 @@ namespace Projeto_DuplinhaFeroz
                 return resultado;
         }
 
-        public MySqlDataReader consultarTurmaID(int mod)
+        public MySqlDataReader consultarTurmaTodasAtivas2()
         {
             MySqlDataReader resultado = null;
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where idModalidade = "+mod, DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select distinct descricaoModalidade from Estudio_Modalidade inner join DAD_Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = DAD_Estudio_Turma.idModalidade and DAD_Estudio_Turma.ativa = 0", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurmaID(string mod)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct * from DAD_Estudio_Turma inner join Estudio_Modalidade on DAD_Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and DAD_Estudio_Turma.ativa = 0 and Estudio_Modalidade.descricaoModalidade = '"+mod+"'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">>>>>" + mod);
             }
@@ -160,19 +178,35 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-        public MySqlDataReader consultarTurmaDiaSem(string diasem)
+        public MySqlDataReader consultarTurmaDiaSem(string diasem, int mod)
         {
             MySqlDataReader resultado = null;
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where diasemanaTurma = '"+diasem+"'", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select * from DAD_Estudio_Turma where diasemanaTurma = '"+diasem+"' and horaTurma = "+mod+"", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">>>>>"+diasem);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarIdDAD(string diasem,string hora, string mod)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select idDAD_Estudio_Turma from DAD_Estudio_Turma inner join Estudio_Modalidade on DAD_Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and DAD_Estudio_Turma.diasemanaTurma = '" + diasem + "' and DAD_Estudio_Turma.horaTurma = '" + hora + "' and Estudio_Modalidade.descricaoModalidade = '"+mod+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarIdDAD");
             }
             return resultado;
         }
