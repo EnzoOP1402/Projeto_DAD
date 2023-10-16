@@ -55,8 +55,6 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-
-
         public bool excluirModalidade(string desc)
         {
             bool resultado = false;
@@ -185,6 +183,27 @@ namespace Projeto_DuplinhaFeroz
             catch(Exception ex)
             {
                 Console.Write (ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
+        public bool verificaModalidade(string desc)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("select idEstudio_Modalidade from Estudio_Modalidade where descricaoModalidade = '" + desc + "'", DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
             finally
             {
