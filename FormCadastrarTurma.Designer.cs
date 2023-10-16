@@ -41,13 +41,13 @@ namespace Projeto_DuplinhaFeroz
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSetarTurma = new System.Windows.Forms.Button();
             this.Turma.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Turma
             // 
+            this.Turma.Controls.Add(this.btnSetarTurma);
             this.Turma.Controls.Add(this.BoxCadastrarTurma);
             this.Turma.Controls.Add(this.txtNalunosTurma);
             this.Turma.Controls.Add(this.label5);
@@ -63,7 +63,7 @@ namespace Projeto_DuplinhaFeroz
             this.Turma.Margin = new System.Windows.Forms.Padding(4);
             this.Turma.Name = "Turma";
             this.Turma.Padding = new System.Windows.Forms.Padding(4);
-            this.Turma.Size = new System.Drawing.Size(473, 250);
+            this.Turma.Size = new System.Drawing.Size(473, 290);
             this.Turma.TabIndex = 0;
             this.Turma.TabStop = false;
             this.Turma.Text = "Cadastro de Turma";
@@ -112,7 +112,7 @@ namespace Projeto_DuplinhaFeroz
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(457, 28);
             this.btnCadastrar.TabIndex = 9;
-            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.Text = "Cadastrar/ atualizar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
@@ -172,29 +172,27 @@ namespace Projeto_DuplinhaFeroz
             this.label1.TabIndex = 0;
             this.label1.Text = "Modalidade:";
             // 
-            // dataGridView1
+            // btnSetarTurma
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 272);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(473, 224);
-            this.dataGridView1.TabIndex = 1;
+            this.btnSetarTurma.Location = new System.Drawing.Point(9, 249);
+            this.btnSetarTurma.Name = "btnSetarTurma";
+            this.btnSetarTurma.Size = new System.Drawing.Size(457, 28);
+            this.btnSetarTurma.TabIndex = 15;
+            this.btnSetarTurma.Text = "Reativar Turma";
+            this.btnSetarTurma.UseVisualStyleBackColor = true;
+            this.btnSetarTurma.Click += new System.EventHandler(this.btnSetarTurma_Click);
             // 
             // FormCadastrarTurma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 523);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(504, 318);
             this.Controls.Add(this.Turma);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastrarTurma";
             this.Text = "Cadastrar Turma";
             this.Turma.ResumeLayout(false);
             this.Turma.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -208,11 +206,11 @@ namespace Projeto_DuplinhaFeroz
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.MaskedTextBox mtxtHoraTurma;
         private System.Windows.Forms.TextBox txtNalunosTurma;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox BoxCadastrarTurma;
+        private System.Windows.Forms.Button btnSetarTurma;
     }
 }

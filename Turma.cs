@@ -84,14 +84,14 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool atualizarTurma()
+        public bool atualizarTurma(int num)
         {
             bool result = false;
 
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("update from Estudio_Turma set (idModalidade, professorTurma, diasemanaTurma, horaTurma, nalunosmatriculadosTurma) values  (" + modalidade + ", '" + professor + "', '" + dia_semana + "', '" + hora + "')", DAO_Conexao.con); //Faltando o numero de alunos!!
+                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set idModalidade = " + modalidade + ", professorTurma = '" + professor + "', diasemanaTurma = '" + dia_semana + "', horaTurma = '" + hora + "', nalunosmatriculadosTurma = " + num + "", DAO_Conexao.con);
             }
             catch (Exception ex)
             {
@@ -125,6 +125,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
                 DAO_Conexao.con.Close();
             }
             return result;
+        }
+
+        public MySqlDataReader consultarTurmaTodas()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Turma", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
         }
 
         public MySqlDataReader consultarTurmaTodasAtivas()
@@ -251,6 +268,27 @@ Console.WriteLine(">>>>>modalidade:" + id);
                 DAO_Conexao.con.Close();
             }
             return prof;
+        }
+
+        public bool setarAtiva(int id)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("update Estudio_Turma set ativa = 0 where idEstuido_Turma = " + id + "'", DAO_Conexao.con);
+                comando.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
         }
 
 
