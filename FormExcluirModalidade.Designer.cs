@@ -89,7 +89,7 @@ namespace Projeto_DuplinhaFeroz
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormExcluirModalidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ExcluirModalidade";
+            this.Text = "Excluir Modalidade";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

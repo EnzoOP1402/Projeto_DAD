@@ -49,18 +49,21 @@ namespace Projeto_DuplinhaFeroz
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(17, 16);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(358, 181);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(477, 223);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Turma";
+            this.groupBox1.Text = "Excluir Turma";
             // 
             // btnExcluirTurma
             // 
-            this.btnExcluirTurma.Location = new System.Drawing.Point(9, 137);
+            this.btnExcluirTurma.Location = new System.Drawing.Point(12, 169);
+            this.btnExcluirTurma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcluirTurma.Name = "btnExcluirTurma";
-            this.btnExcluirTurma.Size = new System.Drawing.Size(343, 23);
+            this.btnExcluirTurma.Size = new System.Drawing.Size(457, 28);
             this.btnExcluirTurma.TabIndex = 6;
             this.btnExcluirTurma.Text = "Excluir";
             this.btnExcluirTurma.UseVisualStyleBackColor = true;
@@ -69,65 +72,72 @@ namespace Projeto_DuplinhaFeroz
             // boxHoraExcluir
             // 
             this.boxHoraExcluir.FormattingEnabled = true;
-            this.boxHoraExcluir.Location = new System.Drawing.Point(97, 95);
+            this.boxHoraExcluir.Location = new System.Drawing.Point(129, 117);
+            this.boxHoraExcluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxHoraExcluir.Name = "boxHoraExcluir";
-            this.boxHoraExcluir.Size = new System.Drawing.Size(121, 21);
+            this.boxHoraExcluir.Size = new System.Drawing.Size(160, 24);
             this.boxHoraExcluir.TabIndex = 5;
             this.boxHoraExcluir.SelectedIndexChanged += new System.EventHandler(this.boxHoraExcluir_SelectedIndexChanged);
             // 
             // boxDiaSemanaExcluir
             // 
             this.boxDiaSemanaExcluir.FormattingEnabled = true;
-            this.boxDiaSemanaExcluir.Location = new System.Drawing.Point(97, 66);
+            this.boxDiaSemanaExcluir.Location = new System.Drawing.Point(129, 81);
+            this.boxDiaSemanaExcluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.boxDiaSemanaExcluir.Name = "boxDiaSemanaExcluir";
-            this.boxDiaSemanaExcluir.Size = new System.Drawing.Size(121, 21);
+            this.boxDiaSemanaExcluir.Size = new System.Drawing.Size(160, 24);
             this.boxDiaSemanaExcluir.TabIndex = 4;
             this.boxDiaSemanaExcluir.SelectedIndexChanged += new System.EventHandler(this.boxDiaSemanaExcluir_SelectedIndexChanged);
             // 
             // BoxModalidade
             // 
             this.BoxModalidade.FormattingEnabled = true;
-            this.BoxModalidade.Location = new System.Drawing.Point(97, 39);
+            this.BoxModalidade.Location = new System.Drawing.Point(129, 48);
+            this.BoxModalidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BoxModalidade.Name = "BoxModalidade";
-            this.BoxModalidade.Size = new System.Drawing.Size(121, 21);
+            this.BoxModalidade.Size = new System.Drawing.Size(160, 24);
             this.BoxModalidade.TabIndex = 3;
             this.BoxModalidade.SelectedIndexChanged += new System.EventHandler(this.BoxModalidade_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(57, 98);
+            this.label3.Location = new System.Drawing.Point(76, 121);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Hora:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 66);
+            this.label2.Location = new System.Drawing.Point(8, 81);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.Size = new System.Drawing.Size(104, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Dia da Semana:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 39);
+            this.label1.Location = new System.Drawing.Point(32, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Modalidade:";
             // 
             // FormExcluirTurma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 214);
+            this.ClientSize = new System.Drawing.Size(523, 263);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormExcluirTurma";
-            this.Text = "FormExcluirTurma";
+            this.Text = "Excluir Turma";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -66,7 +66,7 @@ namespace Projeto_DuplinhaFeroz
             this.Turma.Size = new System.Drawing.Size(473, 250);
             this.Turma.TabIndex = 0;
             this.Turma.TabStop = false;
-            this.Turma.Text = "groupBox1";
+            this.Turma.Text = "Cadastro de Turma";
             // 
             // BoxCadastrarTurma
             // 
@@ -191,7 +191,7 @@ namespace Projeto_DuplinhaFeroz
             this.Controls.Add(this.Turma);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastrarTurma";
-            this.Text = "FormCadastrarTurma";
+            this.Text = "Cadastrar Turma";
             this.Turma.ResumeLayout(false);
             this.Turma.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -30,6 +30,7 @@ namespace Projeto_DuplinhaFeroz
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAtivar = new System.Windows.Forms.Button();
             this.BoxDescricaoCA = new System.Windows.Forms.ComboBox();
             this.btnMostrar_AtualizarModalidade = new System.Windows.Forms.Button();
             this.txtQtdeAulasCA = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@ namespace Projeto_DuplinhaFeroz
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAtivar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,16 @@ namespace Projeto_DuplinhaFeroz
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modalidades";
+            // 
+            // btnAtivar
+            // 
+            this.btnAtivar.Location = new System.Drawing.Point(25, 271);
+            this.btnAtivar.Name = "btnAtivar";
+            this.btnAtivar.Size = new System.Drawing.Size(525, 23);
+            this.btnAtivar.TabIndex = 10;
+            this.btnAtivar.Text = "Reativar";
+            this.btnAtivar.UseVisualStyleBackColor = true;
+            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
             // 
             // BoxDescricaoCA
             // 
@@ -149,16 +159,6 @@ namespace Projeto_DuplinhaFeroz
             this.label2.TabIndex = 1;
             this.label2.Text = "Preço:";
             // 
-            // btnAtivar
-            // 
-            this.btnAtivar.Location = new System.Drawing.Point(25, 271);
-            this.btnAtivar.Name = "btnAtivar";
-            this.btnAtivar.Size = new System.Drawing.Size(525, 23);
-            this.btnAtivar.TabIndex = 10;
-            this.btnAtivar.Text = "Reativar";
-            this.btnAtivar.UseVisualStyleBackColor = true;
-            this.btnAtivar.Click += new System.EventHandler(this.btnAtivar_Click);
-            // 
             // FormCadastrar_AtualizarModalidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -168,7 +168,7 @@ namespace Projeto_DuplinhaFeroz
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCadastrar_AtualizarModalidade";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormConsultar_Atualizar";
+            this.Text = "Consultar Modalidade";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

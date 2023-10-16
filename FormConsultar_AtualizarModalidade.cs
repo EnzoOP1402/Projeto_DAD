@@ -32,6 +32,7 @@ namespace Projeto_DuplinhaFeroz
             }
             else
             {
+                this.Text = "Atualizar Modalidade";
                 btnMostrar_AtualizarModalidade.Text = "Atualizar";
                 btnAtivar.Enabled = false;
                 op = 2;

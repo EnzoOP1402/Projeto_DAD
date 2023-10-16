@@ -24,17 +24,38 @@ namespace Projeto_DuplinhaFeroz
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            Turma t = new Turma();
-            int idmodalidade = t.retornaIdmodalidade(BoxCadastrarTurma.Text);
-            Turma t2 = new Turma(txtProfTurma.Text, txtDiaSemanaTurma.Text, mtxtHoraTurma.Text, idmodalidade);
             try
             {
-                int qtd = int.Parse(txtNalunosTurma.Text);
-                t2.cadastrarTurma(qtd);
-                MessageBox.Show("Cadastrado com sucesso");
-            }catch(Exception ex)
+                Turma t = new Turma();
+                string r = t.consultarDisponibilidae(mtxtHoraTurma.Text, txtDiaSemanaTurma.Text);
+                if (r.Equals(txtProfTurma.Text))
+                {
+                    MessageBox.Show("Não é possível cadastrar pois o professor indicado já possui uma turma nesse mesmo horário.");
+                    txtProfTurma.Focus();
+                }
+                else
+                {
+                    int idmodalidade = t.retornaIdmodalidade(BoxCadastrarTurma.Text);
+                    Turma t2 = new Turma(txtProfTurma.Text, txtDiaSemanaTurma.Text, mtxtHoraTurma.Text, idmodalidade);
+                    int qtd = int.Parse(txtNalunosTurma.Text);
+                    if (t2.cadastrarTurma(qtd))
+                    {
+                        MessageBox.Show("Cadastrado com sucesso");
+                        txtDiaSemanaTurma.Text = "";
+                        txtNalunosTurma.Text = "";
+                        txtProfTurma.Text = "";
+                        mtxtHoraTurma.Text = "";
+                        BoxCadastrarTurma.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro no cadastro");
+                    }
+                }                
+            }
+            catch(Exception ex)
             {
-                MessageBox.Show("Erro no cadastro");
+                MessageBox.Show("Erro na eexcução");
             }
         }
 
