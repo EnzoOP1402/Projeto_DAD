@@ -46,6 +46,27 @@ namespace Projeto_DuplinhaFeroz
             return cad;
         }
 
+        public static Boolean verificaLogin(string usuario)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("select * from Estudio_Login where usuario = '" + usuario + "'", DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
         public static int VeriLogin(String usuario, String senha)
         {
             int retorno = 0; //quando não encontra nada

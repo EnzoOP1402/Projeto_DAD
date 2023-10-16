@@ -19,29 +19,33 @@ namespace Projeto_DuplinhaFeroz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtSenha.Text != "" && txtUsuario.Text != "" && comboBox1.Text != "")
-            {
-                int tipo = 0;
-                if (comboBox1.SelectedIndex == 0)
-                    tipo = 1; //adm
-                else if (comboBox1.SelectedIndex == 1)
-                    tipo = 2; //rest
-                if (DAO_Conexao.CadLogin(txtUsuario.Text, txtSenha.Text, tipo))
+            if (DAO_Conexao.verificaLogin(txtUsuario.Text) == false) { 
+                if (txtSenha.Text != "" && txtUsuario.Text != "" && comboBox1.Text != "")
                 {
-                    MessageBox.Show("Cadastro realizado com sucesso!");
-                    txtSenha.Text = "";
-                    txtUsuario.Text = "";
-                }
+                    int tipo = 0;
+                    if (comboBox1.SelectedIndex == 0)
+                        tipo = 1; //adm
+                    else if (comboBox1.SelectedIndex == 1)
+                        tipo = 2; //rest
+                    if (DAO_Conexao.CadLogin(txtUsuario.Text, txtSenha.Text, tipo))
+                    {
+                        MessageBox.Show("Cadastro realizado com sucesso!");
+                        txtSenha.Text = "";
+                        txtUsuario.Text = "";
+                    }
                 
+                    else
+                        MessageBox.Show("Erro de cadastro!");
+                }
                 else
-                    MessageBox.Show("Erro de cadastro!");
+                {
+                    MessageBox.Show("Nenhum campo pode estar vazio. \nPreencha todos os campos para continuar.");
+                }
             }
             else
             {
-                MessageBox.Show("Nenhum campo pode estar vazio. \nPreencha todos os campos para continuar.");
+                MessageBox.Show("Usuário já cadastrado");
             }
-                
-            
         }
     }
 }
