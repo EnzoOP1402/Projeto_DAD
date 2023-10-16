@@ -268,7 +268,7 @@ namespace Projeto_DuplinhaFeroz
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(130, 20);
             this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "123";
+            this.textBox2.Text = "enzin";
             // 
             // textBox1
             // 
@@ -276,7 +276,7 @@ namespace Projeto_DuplinhaFeroz
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(130, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "viton";
+            this.textBox1.Text = "Enzo";
             // 
             // FormPaginaInicial
             // 

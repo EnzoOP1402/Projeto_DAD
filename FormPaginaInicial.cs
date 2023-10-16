@@ -47,6 +47,13 @@ namespace Projeto_DuplinhaFeroz
                 MessageBox.Show("Login realizado com sucesso! [Usuário Restrito]");
                 menuStrip1.Enabled = true;
                 cadastrarLoginToolStripMenuItem.Enabled = false;
+                atualizarModalidadeToolStripMenuItem1.Enabled = false;
+                cadastrarModalidadeToolStripMenuItem1.Enabled = false;
+                excluirModalidadeToolStripMenuItem1.Enabled = false;
+                cadastroToolStripMenuItem.Enabled = false;
+                exclusãoToolStripMenuItem.Enabled = false;
+                atualizaçãoToolStripMenuItem.Enabled=false;
+                
             }
             else
                 MessageBox.Show("Erro de login!");
