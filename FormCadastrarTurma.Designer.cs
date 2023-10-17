@@ -112,7 +112,7 @@ namespace Projeto_DuplinhaFeroz
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(457, 28);
             this.btnCadastrar.TabIndex = 9;
-            this.btnCadastrar.Text = "Cadastrar/ atualizar";
+            this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 

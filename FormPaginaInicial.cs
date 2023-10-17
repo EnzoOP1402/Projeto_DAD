@@ -41,6 +41,13 @@ namespace Projeto_DuplinhaFeroz
             {
                 MessageBox.Show("Login realizado com sucesso! [ADM]");
                 menuStrip1.Enabled = true;
+                cadastrarLoginToolStripMenuItem.Enabled = true;
+                atualizarModalidadeToolStripMenuItem1.Enabled = true;
+                cadastrarModalidadeToolStripMenuItem1.Enabled = true;
+                excluirModalidadeToolStripMenuItem1.Enabled = true;
+                cadastroToolStripMenuItem.Enabled = true;
+                exclusãoToolStripMenuItem.Enabled = true;
+                atualizaçãoToolStripMenuItem.Enabled = true;
             }
             else if (DAO_Conexao.VeriLogin(textBox1.Text, textBox2.Text) == 2)
                 {
@@ -93,7 +100,7 @@ namespace Projeto_DuplinhaFeroz
 
         private void consultarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Página pendente");
         }
 
         private void excluirAlunoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -134,6 +141,20 @@ namespace Projeto_DuplinhaFeroz
             f.MdiParent = this;
             f.Show();
             groupBox1.Visible = false;
+        }
+
+        private void atualizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCadastrarTurma f = new FormCadastrarTurma(1);
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
+
+        }
+
+        private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Página pendente");
         }
     }
 }

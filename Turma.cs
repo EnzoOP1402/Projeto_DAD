@@ -84,14 +84,16 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool atualizarTurma(int num)
+        public bool atualizarTurma(int num, int id)
         {
             bool result = false;
 
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set idModalidade = " + modalidade + ", professorTurma = '" + professor + "', diasemanaTurma = '" + dia_semana + "', horaTurma = '" + hora + "', nalunosmatriculadosTurma = " + num + "", DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set idModalidade = " + modalidade + ", professorTurma = '" + professor + "', diasemanaTurma = '" + dia_semana + "', horaTurma = '" + hora + "', nalunosmatriculadosTurma = " + num + " where idEstudio_Turma = "+id, DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                result = true;
             }
             catch (Exception ex)
             {
@@ -133,7 +135,7 @@ Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select * from Estudio_Turma", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select distinct descricaoModalidade from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
             }
             catch (Exception ex)
@@ -185,6 +187,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Turma.ativa = 0 and Estudio_Modalidade.descricaoModalidade = '"+mod+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+                Console.WriteLine(">>>>>" + mod);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurmaID2(string mod)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Modalidade.descricaoModalidade = '" + mod + "'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">>>>>" + mod);
             }
@@ -268,6 +287,31 @@ Console.WriteLine(">>>>>modalidade:" + id);
                 DAO_Conexao.con.Close();
             }
             return prof;
+        }
+
+        public int consultaAtiva(int id)
+        {
+            MySqlDataReader r = null;
+            int r2 = 0;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Turma where idEstudio_Turma = " + id + "", DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    r2 = int.Parse(r["ativa"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return r2;
         }
 
         public bool setarAtiva(int id)
