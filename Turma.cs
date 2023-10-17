@@ -320,7 +320,7 @@ Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("update Estudio_Turma set ativa = 0 where idEstuido_Turma = " + id + "'", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("update Estudio_Turma set ativa = 0 where idEstudio_Turma = " + id + "'", DAO_Conexao.con);
                 comando.ExecuteNonQuery();
                 resultado = true;
             }
