@@ -100,7 +100,10 @@ namespace Projeto_DuplinhaFeroz
 
         private void consultarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Página pendente");
+            FormConsultarAluno f = new FormConsultarAluno();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
         }
 
         private void excluirAlunoToolStripMenuItem_Click(object sender, EventArgs e)

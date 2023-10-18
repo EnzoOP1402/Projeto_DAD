@@ -66,6 +66,12 @@
     <Compile Include="FormCadastrarTurma.Designer.cs">
       <DependentUpon>FormCadastrarTurma.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormConsultarAluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultarAluno.Designer.cs">
+      <DependentUpon>FormConsultarAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConsultaTurma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <Compile Include="Turma.cs" />
     <EmbeddedResource Include="FormCadastrarTurma.resx">
       <DependentUpon>FormCadastrarTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultarAluno.resx">
+      <DependentUpon>FormConsultarAluno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConsultaTurma.resx">
       <DependentUpon>FormConsultaTurma.cs</DependentUpon>

@@ -23,29 +23,38 @@ namespace Projeto_DuplinhaFeroz
             {
                 //byte[] foto = converterFotoParaByteArray();
                 Aluno aluno = new Aluno(txtCPF.Text, txtNome.Text, txtEndereco.Text, txtNum.Text, txtBairro.Text, txtComplemento.Text, txtCEP.Text, txtCidade.Text, txtEstado.Text, txtTel.Text, txtEmail.Text);
-                if (aluno.cadastrarAluno())
+                if(aluno.verificaCPF())
                 {
-                    MessageBox.Show("Cadastro realizado com Sucesso");
-                    txtBairro.Text = "";
-                    txtCEP.Text = "";
-                    txtCidade.Text = "";
-                    txtComplemento.Text = "";
-                    txtCPF.Text = "";
-                    txtEmail.Text = "";
-                    txtEndereco.Text = "";
-                    txtEstado.Text = "";
-                    txtNome.Text = "";
-                    txtNum.Text = "";
-                    txtTel.Text = "";
+                    if (aluno.cadastrarAluno())
+                        {
+                            MessageBox.Show("Cadastro realizado com Sucesso");
+                            txtBairro.Text = "";
+                            txtCEP.Text = "";
+                            txtCidade.Text = "";
+                            txtComplemento.Text = "";
+                            txtCPF.Text = "";
+                            txtEmail.Text = "";
+                            txtEndereco.Text = "";
+                            txtEstado.Text = "";
+                            txtNome.Text = "";
+                            txtNum.Text = "";
+                            txtTel.Text = "";
+                        }
+                    else
+                    {
+                            MessageBox.Show("Erro no cadastro");
+                    }
+                            
                 }
                 else
-                    MessageBox.Show("Erro no cadastro");
-            }
+                {
+                    MessageBox.Show("CPF Inválido");
+                }
+            }   
             else
             {
                 MessageBox.Show("O campo CPF não pode estar vazio. \nPreencha para continuar.");
             }
-            
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
