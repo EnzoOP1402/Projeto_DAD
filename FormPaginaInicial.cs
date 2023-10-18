@@ -162,5 +162,6 @@ namespace Projeto_DuplinhaFeroz
             f.Show();
             groupBox1.Visible = false;
         }
+      
     }
 }
