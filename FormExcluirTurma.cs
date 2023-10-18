@@ -71,7 +71,7 @@ namespace Projeto_DuplinhaFeroz
                 MySqlDataReader rID = t.consultarIdDAD(diasem, hora, mod);
                 while (rID.Read())
                 {
-                     id = int.Parse(rID["idDAD_Estudio_Turma"].ToString());
+                     id = int.Parse(rID["idEstudio_Turma"].ToString());
                 }
                 DAO_Conexao.con.Close();
                 if(t.excluirTurma(id))

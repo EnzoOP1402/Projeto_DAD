@@ -91,7 +91,7 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set idModalidade = " + modalidade + ", professorTurma = '" + professor + "', diasemanaTurma = '" + dia_semana + "', horaTurma = '" + hora + "', nalunosmatriculadosTurma = " + num + " where idEstudio_Turma = "+id, DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set idModalidade = " + modalidade + ", professorTurma = '" + professor + "', diasemanaTurma = '" + dia_semana + "', horaTurma = '" + hora + "', nalunosmatriculadosTurma = " + num + " where idModalidade = "+id, DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 result = true;
             }
