@@ -157,6 +157,9 @@
     <EmbeddedResource Include="FormConsultaTurmaID.resx">
       <DependentUpon>FormConsultaTurmaID.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaTurmaModalidade.resx">
+      <DependentUpon>FormConsultaTurmaModalidade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormConsultaTurmaTodos.resx">
       <DependentUpon>FormConsultaTurmaTodos.cs</DependentUpon>
     </EmbeddedResource>

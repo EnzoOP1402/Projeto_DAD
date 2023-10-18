@@ -51,6 +51,7 @@
             this.btnMostrarModalidade.TabIndex = 6;
             this.btnMostrarModalidade.Text = "Buscar por modalidade";
             this.btnMostrarModalidade.UseVisualStyleBackColor = true;
+            this.btnMostrarModalidade.Click += new System.EventHandler(this.btnMostrarModalidade_Click);
             // 
             // btnMostrarID
             // 

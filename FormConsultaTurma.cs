@@ -28,5 +28,11 @@ namespace Projeto_DuplinhaFeroz
             FormConsultaTurmaID f = new FormConsultaTurmaID();
             f.Show();
         }
+
+        private void btnMostrarModalidade_Click(object sender, EventArgs e)
+        {
+            FormConsultaTurmaModalidade f = new FormConsultaTurmaModalidade();
+            f.Show();
+        }
     }
 }

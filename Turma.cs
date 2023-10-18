@@ -163,6 +163,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
             return resultado;
         }
 
+        public MySqlDataReader consultarTurmaDescricao(string desc)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade and Estudio_Modalidade.descricaoModalidade = '"+desc+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
         public MySqlDataReader consultarTurmaTodasAtivas()
         {
                 MySqlDataReader resultado = null;
@@ -187,6 +204,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand comando = new MySqlCommand("select distinct descricaoModalidade from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade and Estudio_Turma.ativa = 0", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurmaTodasDescricao()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct descricaoModalidade from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
             }
             catch (Exception ex)
