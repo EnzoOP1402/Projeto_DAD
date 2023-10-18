@@ -27,19 +27,26 @@ namespace Projeto_DuplinhaFeroz
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             Turma t = new Turma();
-            try
+            if (comboBox1.SelectedIndex == -1)
             {
-                dataGridView1.Rows.Clear();
-                MySqlDataReader reader = t.consultarTurmaID3(int.Parse(comboBox1.SelectedItem.ToString()));
-                while (reader.Read())
-                {
-                    dataGridView1.Rows.Add(reader["idEstudio_Turma"].ToString(), reader["idModalidade"].ToString(), reader["professorTurma"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["nalunosmatriculadosTurma"].ToString(), reader["ativa"].ToString());
-                }
-                DAO_Conexao.con.Close();
+                MessageBox.Show("Selecione um ID");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Erro ao consultar usuário");
+                try
+                {
+                    dataGridView1.Rows.Clear();
+                    MySqlDataReader reader = t.consultarTurmaID3(int.Parse(comboBox1.Text));
+                    while (reader.Read())
+                    {
+                        dataGridView1.Rows.Add(reader["idEstudio_Turma"].ToString(), reader["idModalidade"].ToString(), reader["descricaoModalidade"].ToString(), reader["professorTurma"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["nalunosmatriculadosTurma"].ToString(), reader["ativa"].ToString());
+                    }
+                    DAO_Conexao.con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao consultar usuário");
+                }
             }
         }
     }

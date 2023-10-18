@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.idTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDModalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeModalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.professorTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaSemanaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +72,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTurma,
             this.IDModalidade,
+            this.nomeModalidade,
             this.professorTurma,
             this.diaSemanaTurma,
             this.horaTurma,
@@ -103,6 +105,11 @@
             // 
             this.IDModalidade.HeaderText = "ID Modalidade";
             this.IDModalidade.Name = "IDModalidade";
+            // 
+            // nomeModalidade
+            // 
+            this.nomeModalidade.HeaderText = "Nome da Modalidade";
+            this.nomeModalidade.Name = "nomeModalidade";
             // 
             // professorTurma
             // 
@@ -156,6 +163,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDModalidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeModalidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn professorTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn diaSemanaTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaTurma;

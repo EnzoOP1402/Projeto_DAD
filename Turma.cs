@@ -220,7 +220,7 @@ Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Turma.ativa = 0 and Estudio_Turma.idEstudio_Turma = " + id + "", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Turma.idEstudio_Turma = " + id, DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">>>>>" + id);
             }

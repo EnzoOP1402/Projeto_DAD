@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.idTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDModalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeModalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.professorTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaSemanaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroAlunosTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,16 +55,33 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(861, 298);
+            this.groupBox1.Size = new System.Drawing.Size(952, 298);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(387, 71);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(404, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Selecione um ID";
             // 
             // btnMostrar
             // 
             this.btnMostrar.Location = new System.Drawing.Point(6, 238);
             this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(843, 43);
+            this.btnMostrar.Size = new System.Drawing.Size(929, 43);
             this.btnMostrar.TabIndex = 4;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = true;
@@ -75,6 +93,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTurma,
             this.IDModalidade,
+            this.nomeModalidade,
             this.professorTurma,
             this.diaSemanaTurma,
             this.horaTurma,
@@ -83,8 +102,18 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 109);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(843, 123);
+            this.dataGridView1.Size = new System.Drawing.Size(929, 123);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(358, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(205, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Consultar Turmas por ID";
             // 
             // idTurma
             // 
@@ -97,6 +126,11 @@
             // 
             this.IDModalidade.HeaderText = "ID Modalidade";
             this.IDModalidade.Name = "IDModalidade";
+            // 
+            // nomeModalidade
+            // 
+            this.nomeModalidade.HeaderText = "Nome da Modalidade";
+            this.nomeModalidade.Name = "nomeModalidade";
             // 
             // professorTurma
             // 
@@ -127,38 +161,11 @@
             this.ativa.HeaderText = "Ativa";
             this.ativa.Name = "ativa";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(358, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Consultar Turmas por ID";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(404, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Selecione um ID";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(387, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
-            // 
             // FormConsultaTurmaID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 313);
+            this.ClientSize = new System.Drawing.Size(978, 313);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormConsultaTurmaID";
             this.Text = "FormConsultaTurmaID";
@@ -174,15 +181,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDModalidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeModalidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn professorTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn diaSemanaTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroAlunosTurma;
         private System.Windows.Forms.DataGridViewTextBoxColumn ativa;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
