@@ -39,7 +39,7 @@ namespace Projeto_DuplinhaFeroz
         {
             if (DAO_Conexao.VeriLogin(textBox1.Text, textBox2.Text) == 1)
             {
-                MessageBox.Show("Login realizado com sucesso! [ADM]");
+                this.Text = ("ADM");
                 menuStrip1.Enabled = true;
                 cadastrarLoginToolStripMenuItem.Enabled = true;
                 atualizarModalidadeToolStripMenuItem1.Enabled = true;
@@ -51,7 +51,7 @@ namespace Projeto_DuplinhaFeroz
             }
             else if (DAO_Conexao.VeriLogin(textBox1.Text, textBox2.Text) == 2)
                 {
-                MessageBox.Show("Login realizado com sucesso! [Usuário Restrito]");
+                this.Text = ("Restrito");
                 menuStrip1.Enabled = true;
                 cadastrarLoginToolStripMenuItem.Enabled = false;
                 atualizarModalidadeToolStripMenuItem1.Enabled = false;
