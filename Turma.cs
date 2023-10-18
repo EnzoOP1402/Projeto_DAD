@@ -146,6 +146,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
             return resultado;
         }
 
+        public MySqlDataReader consultarTurmaTodas2()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
         public MySqlDataReader consultarTurmaTodasAtivas()
         {
                 MySqlDataReader resultado = null;
@@ -189,6 +206,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
                 MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Turma.ativa = 0 and Estudio_Modalidade.descricaoModalidade = '"+mod+"'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
                 Console.WriteLine(">>>>>" + mod);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro consultarTurma");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurmaID3(int id)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Turma inner join Estudio_Modalidade on Estudio_Turma.idModalidade = Estudio_Modalidade.idEstudio_Modalidade and Estudio_Turma.ativa = 0 and Estudio_Turma.idEstudio_Turma = " + id + "", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+                Console.WriteLine(">>>>>" + id);
             }
             catch (Exception ex)
             {

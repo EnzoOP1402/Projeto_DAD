@@ -66,6 +66,30 @@
     <Compile Include="FormCadastrarTurma.Designer.cs">
       <DependentUpon>FormCadastrarTurma.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormConsultaTurma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaTurma.Designer.cs">
+      <DependentUpon>FormConsultaTurma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultaTurmaID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaTurmaID.Designer.cs">
+      <DependentUpon>FormConsultaTurmaID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultaTurmaModalidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaTurmaModalidade.Designer.cs">
+      <DependentUpon>FormConsultaTurmaModalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultaTurmaTodos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaTurmaTodos.Designer.cs">
+      <DependentUpon>FormConsultaTurmaTodos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormExcluirModalidade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +150,15 @@
     <Compile Include="Turma.cs" />
     <EmbeddedResource Include="FormCadastrarTurma.resx">
       <DependentUpon>FormCadastrarTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaTurma.resx">
+      <DependentUpon>FormConsultaTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaTurmaID.resx">
+      <DependentUpon>FormConsultaTurmaID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaTurmaTodos.resx">
+      <DependentUpon>FormConsultaTurmaTodos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcluirModalidade.resx">
       <DependentUpon>FormExcluirModalidade.cs</DependentUpon>

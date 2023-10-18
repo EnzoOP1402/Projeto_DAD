@@ -154,7 +154,10 @@ namespace Projeto_DuplinhaFeroz
 
         private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Página pendente");
+            FormConsultaTurma f = new FormConsultaTurma();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
         }
     }
 }
