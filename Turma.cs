@@ -364,11 +364,12 @@ Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Turma where idEstudio_Turma = " + id + "", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select ativa from Estudio_Turma where idModalidade = " + id, DAO_Conexao.con);
                 r = comando.ExecuteReader();
                 if (r.Read())
                 {
                     r2 = int.Parse(r["ativa"].ToString());
+                    Console.WriteLine("ativa: "+r2);
                 }
             }
             catch (Exception ex)
@@ -388,7 +389,7 @@ Console.WriteLine(">>>>>modalidade:" + id);
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("update Estudio_Turma set ativa = 0 where idEstudio_Turma = " + id + "'", DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("update Estudio_Turma set ativa = 0 where idModalidade = " + id, DAO_Conexao.con);
                 comando.ExecuteNonQuery();
                 resultado = true;
             }
