@@ -26,11 +26,19 @@ namespace Projeto_DuplinhaFeroz
 
         private void btnExcluirModalidade_Click(object sender, EventArgs e)
         {
+            int idMod = 0;
             if(BoxExcluir.Text != "")
             {
                 Modalidade m = new Modalidade();
                 if (m.excluirModalidade(BoxExcluir.Text))
                 {
+                    MySqlDataReader r1 = m.consultarIDModalidadeDesc(BoxExcluir.Text);
+                    while (r1.Read())
+                    {
+                        idMod = int.Parse(r1["idEstudio_Modalidade"].ToString());
+                    }
+                    DAO_Conexao.con.Close();
+                    m.excluirTurmaIdModalidade(idMod);
                     MessageBox.Show("Modalidade excluída com sucesso!");
                     BoxExcluir.Text = "";
                     BoxExcluir.Items.Clear();

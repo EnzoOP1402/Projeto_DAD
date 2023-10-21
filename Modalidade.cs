@@ -76,6 +76,28 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
+        public bool excluirTurmaIdModalidade(int id)
+        {
+            bool resultado = false;
+
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set ativa = 1 where idModalidade = " + id, DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
         public bool atualizarModalidade(string desc)
         {
             bool resultado = false;
@@ -140,6 +162,23 @@ namespace Projeto_DuplinhaFeroz
             } catch(Exception ex)
             {
                 Console.WriteLine (ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarIDModalidadeDesc(string desc)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select idEstudio_Modalidade from Estudio_Modalidade where descricaoModalidade = '" + desc + "'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
                 Console.WriteLine("-----------ERRO--------------");
             }
             return resultado;
