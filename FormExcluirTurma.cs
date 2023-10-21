@@ -18,8 +18,6 @@ namespace Projeto_DuplinhaFeroz
         {
             InitializeComponent();
             Turma t = new Turma();
-            
-
             //Consultando todas as turmas ativas e adicionando-as nas comboBox
             MySqlDataReader reader = t.consultarTurmaTodasAtivas();
             while (reader.Read())
@@ -77,9 +75,6 @@ namespace Projeto_DuplinhaFeroz
                 if(t.excluirTurma(id))
                 {
                     MessageBox.Show("Excluido com sucesso!");
-                    BoxModalidade.SelectedIndex = -1;
-                    boxDiaSemanaExcluir.SelectedIndex = -1;
-                    boxHoraExcluir.SelectedIndex = -1;
                 }
                 else
                 {
@@ -94,9 +89,7 @@ namespace Projeto_DuplinhaFeroz
 
         private void BoxModalidade_SelectedIndexChanged(object sender, EventArgs e)
         {
-                
                 Turma t = new Turma();
-                //Consultando todas as turmas ativas e adicionando-as nas comboBox
                 MySqlDataReader reader = t.consultarTurmaID(BoxModalidade.SelectedItem.ToString());
                 boxHoraExcluir.Items.Clear();
                 boxDiaSemanaExcluir.Items.Clear();
@@ -106,7 +99,7 @@ namespace Projeto_DuplinhaFeroz
                     boxDiaSemanaExcluir.Items.Add(reader["diasemanaTurma"].ToString());
                 }
                 DAO_Conexao.con.Close();
-                mod =BoxModalidade.SelectedItem.ToString();//
+                mod = BoxModalidade.SelectedItem.ToString();//
             
         }
 
@@ -120,7 +113,7 @@ namespace Projeto_DuplinhaFeroz
             boxHoraExcluir.Items.Clear();
             Turma t = new Turma();
                 //Limpando todas as comboBox restantes e consultando todas as turmas com o id do combobox de idModalidade
-                MySqlDataReader reader2 = t.consultarTurmaID(BoxModalidade.SelectedItem.ToString());
+                MySqlDataReader reader2 = t.consultarTurmahora(boxDiaSemanaExcluir.SelectedItem.ToString(),mod);
                 while (reader2.Read())
                 {
                     boxHoraExcluir.Items.Add(reader2["horaTurma"].ToString());
