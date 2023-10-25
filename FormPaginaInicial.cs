@@ -162,6 +162,10 @@ namespace Projeto_DuplinhaFeroz
             f.Show();
             groupBox1.Visible = false;
         }
-      
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

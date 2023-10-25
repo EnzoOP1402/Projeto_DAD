@@ -72,6 +72,12 @@
     <Compile Include="FormConsultarAluno.Designer.cs">
       <DependentUpon>FormConsultarAluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormConsultarMatricula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultarMatricula.Designer.cs">
+      <DependentUpon>FormConsultarMatricula.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConsultaTurma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="FormConsultaTurmaTodos.Designer.cs">
       <DependentUpon>FormConsultaTurmaTodos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormExcluirMatricula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExcluirMatricula.Designer.cs">
+      <DependentUpon>FormExcluirMatricula.cs</DependentUpon>
     </Compile>
     <Compile Include="FormExcluirModalidade.cs">
       <SubType>Form</SubType>
@@ -125,6 +137,12 @@
     </Compile>
     <Compile Include="FormExcluirTurma.Designer.cs">
       <DependentUpon>FormExcluirTurma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMatricular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMatricular.Designer.cs">
+      <DependentUpon>FormMatricular.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPaginaInicial.cs">
       <SubType>Form</SubType>
@@ -186,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormExcluirTurma.resx">
       <DependentUpon>FormExcluirTurma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMatricular.resx">
+      <DependentUpon>FormMatricular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPaginaInicial.resx">
       <DependentUpon>FormPaginaInicial.cs</DependentUpon>
