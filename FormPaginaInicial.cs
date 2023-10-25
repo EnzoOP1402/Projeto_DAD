@@ -167,5 +167,13 @@ namespace Projeto_DuplinhaFeroz
         {
 
         }
+
+        private void matricularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMatricular f = new FormMatricular();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
+        }
     }
 }
