@@ -68,7 +68,13 @@ namespace Projeto_DuplinhaFeroz
                 }
                 else
                 {
-                    MessageBox.Show("Não encontrado");
+                    DialogResult r = MessageBox.Show("Este aluno não está cadastrado no sistema.\nDeseja cadastrá-lo?", "Não encontrado", MessageBoxButtons.YesNo);
+                    if(r == DialogResult.Yes)
+                    {
+                        FormCadastrarAlunos f1 = new FormCadastrarAlunos();
+                        f1.Show();
+                        this.Close();
+                    }
                 }
             }
         }
