@@ -163,6 +163,23 @@ Console.WriteLine(">>>>>modalidade:" + id);
             return resultado;
         }
 
+        public MySqlDataReader consultarTurmaTodasAtivaComInnerJoin()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade and Estudio_Turma.ativa = 0", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
         public MySqlDataReader consultarTurmaDescricao(string desc)
         {
             MySqlDataReader resultado = null;

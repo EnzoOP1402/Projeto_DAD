@@ -168,6 +168,7 @@
     <Compile Include="FormExcluirAluno.Designer.cs">
       <DependentUpon>FormExcluirAluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Matricula.cs" />
     <Compile Include="Modalidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

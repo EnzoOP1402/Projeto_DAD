@@ -13,6 +13,7 @@ namespace Projeto_DuplinhaFeroz
 {
     public partial class FormMatricular : Form
     {
+        string desc;
         public FormMatricular()
         {
             InitializeComponent();
@@ -20,7 +21,24 @@ namespace Projeto_DuplinhaFeroz
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Matricula m = new Matricula();
+            try
+            {
+                Console.WriteLine("descricao: "+desc);
+                int idModalidade = m.retornaIdmodalidade(desc);
+                int idTurma = m.retornaIdTurma(idModalidade);
+                if(m.matricular(mskCPFMatricula.Text.ToString(), idTurma))
+                {
+                    MessageBox.Show("Matricula concluída");
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao matricular este aluno");
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Erro na matricula");
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,7 +77,7 @@ namespace Projeto_DuplinhaFeroz
                         txtNomeAluno.Text = r["Nome"].ToString();
                     }DAO_Conexao.con.Close();
                     dataGridView1.Rows.Clear();
-                    MySqlDataReader reader = t.consultarTurmaTodas2();
+                    MySqlDataReader reader = t.consultarTurmaTodasAtivaComInnerJoin();
                     while (reader.Read())
                     {
                         dataGridView1.Rows.Add(reader["descricaoModalidade"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["professorTurma"].ToString());
@@ -77,6 +95,13 @@ namespace Projeto_DuplinhaFeroz
                     }
                 }
             }
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            desc = null;
+            desc = dataGridView1.CurrentCell.Value.ToString();
+            Console.WriteLine("dd:" + desc);
         }
     }
 }
