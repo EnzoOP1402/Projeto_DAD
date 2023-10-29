@@ -14,6 +14,7 @@ namespace Projeto_DuplinhaFeroz
     public partial class FormMatricular : Form
     {
         string desc;
+        
         public FormMatricular()
         {
             InitializeComponent();
@@ -23,18 +24,23 @@ namespace Projeto_DuplinhaFeroz
         {
             Matricula m = new Matricula();
             try
-            {
+            {   int nInicial, nFinal = 0;
                 Console.WriteLine("descricao: "+desc);
                 int idModalidade = m.retornaIdmodalidade(desc);
                 int idTurma = m.retornaIdTurma(idModalidade);
-                if(m.matricular(mskCPFMatricula.Text.ToString(), idTurma))
+                nInicial = m.retornaNAlunos(idTurma);
+                nFinal = nInicial + 1;
+                Console.WriteLine("nFinal: "+nFinal);
+                if(m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal,idTurma)))
                 {
                     MessageBox.Show("Matricula concluída");
+                    nFinal = 0;
                 }
                 else
                 {
                     MessageBox.Show("Erro ao matricular este aluno");
                 }
+                
             }catch (Exception ex)
             {
                 MessageBox.Show("Erro na matricula");

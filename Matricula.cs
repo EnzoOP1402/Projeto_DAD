@@ -31,8 +31,8 @@ namespace Projeto_DuplinhaFeroz
                 MySqlCommand sql = new MySqlCommand("insert into Estudio_Matricula (CPFaluno, idTurma) values  ('"+cpf+"', '"+idturma+"')", DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 result = true;
-                Console.WriteLine("CPF do Aluno: "+CPF);
-                Console.WriteLine("idTurma: " + idTurma);
+                Console.WriteLine("CPF do Aluno: "+cpf);
+                Console.WriteLine("idTurma: " + idturma);
             }
             catch (Exception ex)
             {
@@ -85,6 +85,55 @@ namespace Projeto_DuplinhaFeroz
                     result = int.Parse(r["idEstudio_Turma"].ToString());
                     Console.WriteLine("idTurma: " + result);
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
+
+        public int retornaNAlunos(int idTurma)
+        {
+            int result = 0;
+            MySqlDataReader r = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select nAlunosMatriculados from Estudio_Turma where idEstudio_Turma = " + idTurma, DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    result = int.Parse(r["nAlunosMatriculados"].ToString());
+                    Console.WriteLine("nAlunosMatriculados: " + result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
+
+        public bool atualizarNAlunosMatriculados(int nFinal, int idTurma)
+        {
+            bool result = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("update Estudio_Turma set nAlunosMatriculados = "+nFinal+" where idEstudio_Turma = "+idTurma, DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                result = true;
+                Console.WriteLine("nAlunosMatriculados: " + nFinal);
+                Console.WriteLine("idTurma: " + idTurma);
             }
             catch (Exception ex)
             {
