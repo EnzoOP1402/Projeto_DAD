@@ -191,6 +191,9 @@
     <EmbeddedResource Include="FormConsultaTurmaTodos.resx">
       <DependentUpon>FormConsultaTurmaTodos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormExcluirMatricula.resx">
+      <DependentUpon>FormExcluirMatricula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormExcluirModalidade.resx">
       <DependentUpon>FormExcluirModalidade.cs</DependentUpon>
     </EmbeddedResource>

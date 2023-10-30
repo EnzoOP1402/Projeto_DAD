@@ -45,6 +45,29 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
+        public bool excluirMatricular(string cpf, int idturma)
+        {
+            bool result = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand sql = new MySqlCommand("delete from Estudio_Matricula where CPFAluno = "+cpf+" and idTurma = "+idturma, DAO_Conexao.con);
+                sql.ExecuteNonQuery();
+                result = true;
+                Console.WriteLine("CPF do Aluno excluido: " + cpf);
+                Console.WriteLine("idTurma excluido: " + idturma);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
+
         public int retornaIdmodalidade(string descricao)
         {
             int result = 0;
