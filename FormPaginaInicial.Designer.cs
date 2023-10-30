@@ -265,25 +265,26 @@ namespace Projeto_DuplinhaFeroz
             // matricularToolStripMenuItem
             // 
             this.matricularToolStripMenuItem.Name = "matricularToolStripMenuItem";
-            this.matricularToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.matricularToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.matricularToolStripMenuItem.Text = "Matricular";
             this.matricularToolStripMenuItem.Click += new System.EventHandler(this.matricularToolStripMenuItem_Click);
             // 
             // desmatricularToolStripMenuItem
             // 
             this.desmatricularToolStripMenuItem.Name = "desmatricularToolStripMenuItem";
-            this.desmatricularToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.desmatricularToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.desmatricularToolStripMenuItem.Text = "Desmatricular";
+            this.desmatricularToolStripMenuItem.Click += new System.EventHandler(this.desmatricularToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(175, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consultarToolStripMenuItem.Text = "Consultar Matrícula";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 

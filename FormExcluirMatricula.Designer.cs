@@ -29,14 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomeAluno = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.mskCPFMatricula = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.idTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idModalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProfessorTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diasemanaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaTurma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +60,16 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Aluno";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(213, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(331, 20);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Turmas em que o aluno está cadastrado";
             // 
             // label1
             // 
@@ -82,16 +96,22 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Desmatricular";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idTurma});
+            this.idTurma,
+            this.idModalidade,
+            this.ProfessorTurma,
+            this.diasemanaTurma,
+            this.horaTurma});
             this.dataGridView1.Location = new System.Drawing.Point(144, 52);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(484, 97);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // label2
             // 
@@ -109,16 +129,7 @@
             this.mskCPFMatricula.Name = "mskCPFMatricula";
             this.mskCPFMatricula.Size = new System.Drawing.Size(95, 20);
             this.mskCPFMatricula.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(213, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(331, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Turmas em que o aluno está cadastrado";
+            this.mskCPFMatricula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mskCPFMatricula_KeyPress);
             // 
             // idTurma
             // 
@@ -127,6 +138,30 @@
             this.idTurma.MinimumWidth = 10;
             this.idTurma.Name = "idTurma";
             this.idTurma.ReadOnly = true;
+            // 
+            // idModalidade
+            // 
+            this.idModalidade.HeaderText = "idModalidade";
+            this.idModalidade.Name = "idModalidade";
+            this.idModalidade.ReadOnly = true;
+            // 
+            // ProfessorTurma
+            // 
+            this.ProfessorTurma.HeaderText = "Professor";
+            this.ProfessorTurma.Name = "ProfessorTurma";
+            this.ProfessorTurma.ReadOnly = true;
+            // 
+            // diasemanaTurma
+            // 
+            this.diasemanaTurma.HeaderText = "Dia";
+            this.diasemanaTurma.Name = "diasemanaTurma";
+            this.diasemanaTurma.ReadOnly = true;
+            // 
+            // horaTurma
+            // 
+            this.horaTurma.HeaderText = "Hora";
+            this.horaTurma.Name = "horaTurma";
+            this.horaTurma.ReadOnly = true;
             // 
             // FormExcluirMatricula
             // 
@@ -154,5 +189,9 @@
         private System.Windows.Forms.MaskedTextBox mskCPFMatricula;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idModalidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProfessorTurma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diasemanaTurma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horaTurma;
     }
 }

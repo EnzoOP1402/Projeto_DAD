@@ -51,7 +51,7 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand sql = new MySqlCommand("delete from Estudio_Matricula where CPFAluno = "+cpf+" and idTurma = "+idturma, DAO_Conexao.con);
+                MySqlCommand sql = new MySqlCommand("delete from Estudio_Matricula where CPFaluno = '"+cpf+"' and idTurma = "+idturma, DAO_Conexao.con);
                 sql.ExecuteNonQuery();
                 result = true;
                 Console.WriteLine("CPF do Aluno excluido: " + cpf);
@@ -149,13 +149,26 @@ namespace Projeto_DuplinhaFeroz
         public bool retornaSeExisteCPFCadasatradoWhereidTurma(int idturma)
         {
             bool result = false;
+            string cpf = null;
             try
             {
+                MySqlDataReader r = null;
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select CPFAluno from Estudio_Matricula where idTurma = " + idturma, DAO_Conexao.con);
-                comando.ExecuteNonQuery();
-                result = true;
-                Console.WriteLine("Aluno ja existe nessa turma");
+                MySqlCommand comando = new MySqlCommand("select CPFaluno from Estudio_Matricula where idTurma = "+idturma, DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                while (r.Read())
+                {
+                    cpf = r["CPFaluno"].ToString();
+                }
+                if (cpf == null)
+                {
+                    result=false;
+                }
+                else
+                {
+                    result = true;
+                    Console.WriteLine("Aluno ja existe nessa turma");
+                }
             }
             catch (Exception ex)
             {
@@ -167,7 +180,6 @@ namespace Projeto_DuplinhaFeroz
             }
             return result;
         }
-
 
         public bool atualizarNAlunosMatriculados(int nFinal, int idTurma)
         {
@@ -190,6 +202,24 @@ namespace Projeto_DuplinhaFeroz
                 DAO_Conexao.con.Close();
             }
             return result;
+        }
+
+        public MySqlDataReader consultarAlunoMatriculado(string cpf)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select distinct * from Estudio_Matricula inner join Estudio_Turma on Estudio_Matricula.idTurma = Estudio_Turma.idEstudio_Turma and Estudio_Matricula.CPFaluno = '"+cpf+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+                Console.WriteLine("feito");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
         }
 
         public string CPF1 { get => CPF; set => CPF = value; }
