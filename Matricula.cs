@@ -123,6 +123,29 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
+        public bool retornaSeExisteCPFCadasatradoWhereidTurma(int idturma)
+        {
+            bool result = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select CPFAluno from Estudio_Matricula where idTurma = " + idturma, DAO_Conexao.con);
+                comando.ExecuteNonQuery();
+                result = true;
+                Console.WriteLine("Aluno ja existe nessa turma");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
+
+
         public bool atualizarNAlunosMatriculados(int nFinal, int idTurma)
         {
             bool result = false;

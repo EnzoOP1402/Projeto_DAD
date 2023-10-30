@@ -24,23 +24,30 @@ namespace Projeto_DuplinhaFeroz
         {
             Matricula m = new Matricula();
             try
-            {   int nInicial, nFinal = 0;
+            {   
+                int nInicial, nFinal = 0;
                 Console.WriteLine("descricao: "+desc);
                 int idModalidade = m.retornaIdmodalidade(desc);
                 int idTurma = m.retornaIdTurma(idModalidade);
-                nInicial = m.retornaNAlunos(idTurma);
-                nFinal = nInicial + 1;
-                Console.WriteLine("nFinal: "+nFinal);
-                if(m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal,idTurma)))
+                if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma) == false)
                 {
-                    MessageBox.Show("Matricula concluída");
-                    nFinal = 0;
+                    nInicial = m.retornaNAlunos(idTurma);
+                    nFinal = nInicial + 1;
+                    Console.WriteLine("nFinal: " + nFinal);
+                    if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                    {
+                        MessageBox.Show("Matricula concluída");
+                        nFinal = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao matricular este aluno");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao matricular este aluno");
+                    MessageBox.Show("Aluno já cadastrado, selecione outra turma.");
                 }
-                
             }catch (Exception ex)
             {
                 MessageBox.Show("Erro na matricula");
