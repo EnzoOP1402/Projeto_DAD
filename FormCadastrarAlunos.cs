@@ -21,36 +21,39 @@ namespace Projeto_DuplinhaFeroz
         {
             if (txtCPF.Text != "   -   -   -")
             {
-                //byte[] foto = converterFotoParaByteArray();
-                Aluno aluno = new Aluno(txtCPF.Text, txtNome.Text, txtEndereco.Text, txtNum.Text, txtBairro.Text, txtComplemento.Text, txtCEP.Text, txtCidade.Text, txtEstado.Text, txtTel.Text, txtEmail.Text);
-                if(aluno.verificaCPF())
+                byte[] foto = converterFotoParaByteArray();
+                Aluno aluno = new Aluno(txtCPF.Text, txtNome.Text, txtEndereco.Text, txtNum.Text, txtBairro.Text, txtComplemento.Text, txtCEP.Text, txtCidade.Text, txtEstado.Text, txtTel.Text, txtEmail.Text, foto);
+
+                
+
+                if (aluno.verificaCPF())
                 {
                     if (aluno.cadastrarAluno())
-                        {
-                            MessageBox.Show("Cadastro realizado com Sucesso");
-                            txtBairro.Text = "";
-                            txtCEP.Text = "";
-                            txtCidade.Text = "";
-                            txtComplemento.Text = "";
-                            txtCPF.Text = "";
-                            txtEmail.Text = "";
-                            txtEndereco.Text = "";
-                            txtEstado.Text = "";
-                            txtNome.Text = "";
-                            txtNum.Text = "";
-                            txtTel.Text = "";
-                        }
+                    {
+                        MessageBox.Show("Cadastro realizado com Sucesso");
+                        txtBairro.Text = "";
+                        txtCEP.Text = "";
+                        txtCidade.Text = "";
+                        txtComplemento.Text = "";
+                        txtCPF.Text = "";
+                        txtEmail.Text = "";
+                        txtEndereco.Text = "";
+                        txtEstado.Text = "";
+                        txtNome.Text = "";
+                        txtNum.Text = "";
+                        txtTel.Text = "";
+                    }
                     else
                     {
-                            MessageBox.Show("Erro no cadastro");
+                        MessageBox.Show("Erro no cadastro");
                     }
-                            
+
                 }
                 else
                 {
                     MessageBox.Show("CPF Inválido");
                 }
-            }   
+            }
             else
             {
                 MessageBox.Show("O campo CPF não pode estar vazio. \nPreencha para continuar.");
@@ -73,6 +76,41 @@ namespace Projeto_DuplinhaFeroz
                 }
                 DAO_Conexao.con.Close();
             }
+        }
+
+        private byte[] converterFotoParaByteArray()
+        {
+            using (var stream = new System.IO.MemoryStream())
+            {
+                pictureBox1.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                stream.Seek(0, System.IO.SeekOrigin.Begin);
+                byte[] bArray = new byte[stream.Length];
+                stream.Read(bArray, 0, System.Convert.ToInt32(stream.Length));
+                return bArray;
+            }
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Title = "Abrir Foto";
+            dialog.Filter = "JPG (*.jpg)|*.jpg" + "|All files (*.*)|*.*";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    pictureBox1.Image = new Bitmap(dialog.OpenFile());
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Não foi possivel carregar a foto: " + ex.Message);
+                }//catch
+            }//if
+            dialog.Dispose();
         }
     }
 }

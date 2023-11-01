@@ -20,10 +20,26 @@ namespace Projeto_DuplinhaFeroz
         private string Estado;
         private string Telefone;
         private string Email;
-        /*private byte[] Foto;*/
+        private byte[] Foto;
         private int ativo = 0;
 
-        public Aluno(string cpf, string nome, string rua, string numero, string bairro, string complemento, string cep, string cidade, string estado, string telefone, string email /*byte[]foto*/)
+        public Aluno(string cpf, string nome, string rua, string numero, string bairro, string complemento, string cep, string cidade, string estado, string telefone, string email, byte[] foto)
+        {
+            setCPF(cpf);
+            setNome(nome);
+            setRua(rua);
+            setNumero(numero);
+            setBairro(bairro);
+            setComplemento(complemento);
+            setCEP(cep);
+            setCidade(cidade);
+            setEstado(estado);
+            setTelefone(telefone);
+            setEmail(email);
+            setFoto(foto);
+        }
+
+        public Aluno(string cpf, string nome, string rua, string numero, string bairro, string complemento, string cep, string cidade, string estado, string telefone, string email)
         {
             setCPF(cpf);
             setNome(nome);
@@ -38,10 +54,11 @@ namespace Projeto_DuplinhaFeroz
             setEmail(email);
         }
 
-        public Aluno() { 
+        public Aluno()
+        {
         }
 
-        public Aluno (String cpf)
+        public Aluno(String cpf)
         {
             setCPF(cpf);
         }
@@ -53,8 +70,8 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPF, Nome, Endereco, Bairro, " + "CEP, Telefone, Cidade, Email, Estado, Complemento, Num) values" + "('" + CPF + "','" + Nome + "','" + Rua + "','" + Bairro + "','" + CEP + "','" + Telefone + "','" + Cidade + "','" + Email + "','" + Estado + "','" + Complemento + "','" + Numero + "')", DAO_Conexao.con);
-                //insere.Parameters.AddWithValue("foto", this.Foto);
+                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPF, Nome, Endereco, Bairro, " + "CEP, Telefone, Cidade, Email, Estado, Complemento, Num, Foto) values" + "('" + CPF + "','" + Nome + "','" + Rua + "','" + Bairro + "','" + CEP + "','" + Telefone + "','" + Cidade + "','" + Email + "','" + Estado + "','" + Complemento + "','" + Numero + "', @foto)", DAO_Conexao.con);
+                insere.Parameters.AddWithValue("foto", this.Foto);
                 insere.ExecuteNonQuery();
                 cad = true;
             }
@@ -75,14 +92,14 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand consulta = new MySqlCommand ("SELECT * FROM Estudio_Aluno WHERE CPF='" + CPF + "'",DAO_Conexao.con);
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM Estudio_Aluno WHERE CPF='" + CPF + "'", DAO_Conexao.con);
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 if (resultado.Read())
                 {
                     existe = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -112,7 +129,7 @@ namespace Projeto_DuplinhaFeroz
             }
             finally
             {
-               DAO_Conexao.con.Close();
+                DAO_Conexao.con.Close();
             }
             return existe;
         }
@@ -133,13 +150,13 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
-        public MySqlDataReader consultarAluno4( string cpf)
+        public MySqlDataReader consultarAluno4(string cpf)
         {
             MySqlDataReader resultado = null;
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand consulta = new MySqlCommand("SELECT * FROM Estudio_Aluno where CPF = '"+cpf+"'", DAO_Conexao.con);
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM Estudio_Aluno where CPF = '" + cpf + "'", DAO_Conexao.con);
                 resultado = consulta.ExecuteReader();
             }
             catch (Exception ex)
@@ -155,11 +172,11 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand exclui = new MySqlCommand("update Estudio_Aluno set ativo = 1 where CPF = '"+CPF+"'",DAO_Conexao.con);
+                MySqlCommand exclui = new MySqlCommand("update Estudio_Aluno set ativo = 1 where CPF = '" + CPF + "'", DAO_Conexao.con);
                 exclui.ExecuteNonQuery();
                 exc = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -346,14 +363,14 @@ namespace Projeto_DuplinhaFeroz
             return this.Email;
         }
 
-        /*public void setFoto(byte[] Foto)
+        public void setFoto(byte[] Foto)
         {
             this.Foto = Foto;
         }
         public byte[] getFoto()
         {
             return this.Foto;
-        }*/
+        }
 
     }
 }
