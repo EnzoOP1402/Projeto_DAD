@@ -25,29 +25,40 @@ namespace Projeto_DuplinhaFeroz
             Matricula m = new Matricula();
             try
             {   
-                int nInicial, nFinal = 0;
+                int nMaxAlunos,nInicial, nFinal = 0;
                 Console.WriteLine("descricao: "+desc);
                 int idModalidade = m.retornaIdmodalidade(desc);
                 int idTurma = m.retornaIdTurma(idModalidade);
-                if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma) == false)
+                if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma, mskCPFMatricula.Text) == false)
                 {
                     nInicial = m.retornaNAlunos(idTurma);
                     nFinal = nInicial + 1;
                     Console.WriteLine("nFinal: " + nFinal);
-                    if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                    Console.WriteLine("IDTURMA:"+idTurma);
+                    nMaxAlunos = m.retornaNMaxAlunos(idTurma);
+                    Console.WriteLine("Numero Maximo de alunos: "+nMaxAlunos);
+                    if(nFinal <= nMaxAlunos)
                     {
-                        MessageBox.Show("Matricula concluída");
-                        nFinal = 0;
+                        if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                        {
+                            MessageBox.Show("Matricula concluída");
+                            nFinal = 0;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao matricular este aluno");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Erro ao matricular este aluno");
+                        MessageBox.Show("Número maximo de alunos atingidos nessa turma.");
                     }
                 }
                 else
                 {
                     MessageBox.Show("Aluno já cadastrado, selecione outra turma.");
                 }
+                    
             }catch (Exception ex)
             {
                 MessageBox.Show("Erro na matricula");

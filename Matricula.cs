@@ -146,7 +146,33 @@ namespace Projeto_DuplinhaFeroz
             return result;
         }
 
-        public bool retornaSeExisteCPFCadasatradoWhereidTurma(int idturma)
+        public int retornaNMaxAlunos(int idTurma)
+        {
+            int result = 0;
+            MySqlDataReader r = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select nMaximoAluno from Estudio_Turma where idEstudio_Turma = " + idTurma, DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    result = int.Parse(r["nMaximoAluno"].ToString());
+                    Console.WriteLine("nMaximoAluno: " + result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return result;
+        }
+
+        public bool retornaSeExisteCPFCadasatradoWhereidTurma(int idturma, string cpF)
         {
             bool result = false;
             string cpf = null;
@@ -154,7 +180,7 @@ namespace Projeto_DuplinhaFeroz
             {
                 MySqlDataReader r = null;
                 DAO_Conexao.con.Open();
-                MySqlCommand comando = new MySqlCommand("select CPFaluno from Estudio_Matricula where idTurma = "+idturma, DAO_Conexao.con);
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Matricula where idTurma = "+idturma+" and CPFaluno = '"+cpF+"'", DAO_Conexao.con);
                 r = comando.ExecuteReader();
                 while (r.Read())
                 {
