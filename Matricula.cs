@@ -248,6 +248,41 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
+        public MySqlDataReader consultarAlunoMatriculadoPassandoIDturma(int idturma)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Aluno inner join Estudio_Matricula on Estudio_Matricula.CPFaluno = Estudio_Aluno.CPF and Estudio_Matricula.idTurma = " + idturma, DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+                Console.WriteLine("Rodou o consultarAlunoMatriculadoPassandoIDturma");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader consultarTurmaTodasAtivaComInnerJoin()
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select * from Estudio_Modalidade inner join Estudio_Turma on Estudio_Modalidade.idEstudio_Modalidade = Estudio_Turma.idModalidade and Estudio_Turma.ativa = 0", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
         public string CPF1 { get => CPF; set => CPF = value; }
         public int IdTurma { get => idTurma; set => idTurma = value; }
     }

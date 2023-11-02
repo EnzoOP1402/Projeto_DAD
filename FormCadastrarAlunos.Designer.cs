@@ -94,7 +94,7 @@ namespace Projeto_DuplinhaFeroz
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(24, 254);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(463, 31);
             this.button1.TabIndex = 22;
@@ -105,10 +105,10 @@ namespace Projeto_DuplinhaFeroz
             // txtCPF
             // 
             this.txtCPF.Location = new System.Drawing.Point(82, 30);
-            this.txtCPF.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCPF.Margin = new System.Windows.Forms.Padding(2);
             this.txtCPF.Mask = "999-999-999-99";
             this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(114, 20);
+            this.txtCPF.Size = new System.Drawing.Size(86, 20);
             this.txtCPF.TabIndex = 1;
             this.txtCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_KeyPress);
             // 
@@ -158,7 +158,7 @@ namespace Projeto_DuplinhaFeroz
             // txtCEP
             // 
             this.txtCEP.Location = new System.Drawing.Point(82, 185);
-            this.txtCEP.Mask = "99.999-999";
+            this.txtCEP.Mask = "99,999-999";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(74, 20);
             this.txtCEP.TabIndex = 14;
@@ -286,7 +286,7 @@ namespace Projeto_DuplinhaFeroz
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(537, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(219, 240);
             this.pictureBox1.TabIndex = 1;
@@ -295,7 +295,7 @@ namespace Projeto_DuplinhaFeroz
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(538, 262);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(219, 34);
             this.button2.TabIndex = 2;

@@ -70,7 +70,7 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPF, Nome, Endereco, Bairro, " + "CEP, Telefone, Cidade, Email, Estado, Complemento, Num, Foto) values" + "('" + CPF + "','" + Nome + "','" + Rua + "','" + Bairro + "','" + CEP + "','" + Telefone + "','" + Cidade + "','" + Email + "','" + Estado + "','" + Complemento + "','" + Numero + "', @foto)", DAO_Conexao.con);
+                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPF, Nome, Endereco, Bairro, " + "CEP, Telefone, Cidade, Email, Estado, Complemento, Num, ativo, Foto) values" + "('" + CPF + "','" + Nome + "','" + Rua + "','" + Bairro + "','" + CEP + "','" + Telefone + "','" + Cidade + "','" + Email + "','" + Estado + "','" + Complemento + "','" + Numero + "', 0, @foto)", DAO_Conexao.con);
                 insere.Parameters.AddWithValue("foto", this.Foto);
                 insere.ExecuteNonQuery();
                 cad = true;

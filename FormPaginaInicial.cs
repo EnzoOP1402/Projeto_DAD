@@ -165,7 +165,10 @@ namespace Projeto_DuplinhaFeroz
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormConsultarMatricula f = new FormConsultarMatricula();
+            f.MdiParent = this;
+            f.Show();
+            groupBox1.Visible = false;
         }
 
         private void matricularToolStripMenuItem_Click(object sender, EventArgs e)
