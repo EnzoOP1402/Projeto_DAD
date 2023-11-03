@@ -68,7 +68,7 @@ namespace Projeto_DuplinhaFeroz
                 {
                     MessageBox.Show("Aluno desmatriculado com sucesso");
                 }
-            }catch (Exception ex)
+            }catch
             {
                 MessageBox.Show("Erro ao desmatricular aluno");
             }

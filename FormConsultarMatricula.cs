@@ -35,7 +35,7 @@ namespace Projeto_DuplinhaFeroz
                 idturma = int.Parse(dataGridView1.CurrentCell.Value.ToString());
                 Console.WriteLine("IDTURMA: "+idturma);
                 MySqlDataReader r = m.consultarAlunoMatriculadoPassandoIDturma(idturma);
-                if (r.HasRows)
+                if (r!= null && r.HasRows)
                 {
                     while(r.Read())
                         {
@@ -45,7 +45,8 @@ namespace Projeto_DuplinhaFeroz
                 }
                 else
                 {
-                    MessageBox.Show("Nao tem alunos cadastrados nessa turma");
+                    MessageBox.Show("Não tem alunos cadastrados nessa turma");
+                    DAO_Conexao.con.Close();
                 }
             }catch (Exception ex)
             {
