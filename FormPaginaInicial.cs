@@ -60,6 +60,8 @@ namespace Projeto_DuplinhaFeroz
                 cadastroToolStripMenuItem.Enabled = false;
                 exclusãoToolStripMenuItem.Enabled = false;
                 atualizaçãoToolStripMenuItem.Enabled=false;
+                matricularToolStripMenuItem.Enabled = false;
+                desmatricularToolStripMenuItem.Enabled = false;
                 
             }
             else

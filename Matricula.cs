@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -278,6 +279,61 @@ namespace Projeto_DuplinhaFeroz
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public int qtdHorariosOcupados(string cpf)
+        {
+            int resultado = 0;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select count(horaTurma) from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '"+cpf+"'", DAO_Conexao.con);
+                resultado = int.Parse(comando.ExecuteReader().ToString());
+            }
+            catch
+            {
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+        public string retornaHoraIndicada(int id)
+        {
+            string resultado = "";
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select horaTurma from Estudio_Turma where idEstudio_Turma = "+id, DAO_Conexao.con);
+                resultado = comando.ExecuteReader().ToString();
+            }
+            catch
+            {
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
+        public MySqlDataReader retornaHorariosOcupados(string cpf)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select horaTurma from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '"+cpf+"'", DAO_Conexao.con);
+                resultado = comando.ExecuteReader();
+            }
+            catch
+            {
                 Console.WriteLine("-----------ERRO--------------");
             }
             return resultado;
