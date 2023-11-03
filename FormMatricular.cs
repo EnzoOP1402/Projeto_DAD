@@ -13,7 +13,7 @@ namespace Projeto_DuplinhaFeroz
 {
     public partial class FormMatricular : Form
     {
-        string desc;
+        string id;
         
         public FormMatricular()
         {
@@ -28,9 +28,7 @@ namespace Projeto_DuplinhaFeroz
                 int nMaxAlunos, nInicial, nFinal, qtdHorarios = 0;
                 string hora;
                 bool horaOcupada = false;
-                Console.WriteLine("descricao: "+desc);
-                int idModalidade = m.retornaIdmodalidade(desc);
-                int idTurma = m.retornaIdTurma(idModalidade);
+                int idTurma = int.Parse(id.ToString());
                 if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma, mskCPFMatricula.Text) == false)
                 {
                     nInicial = m.retornaNAlunos(idTurma);
@@ -136,7 +134,7 @@ namespace Projeto_DuplinhaFeroz
                     MySqlDataReader reader = t.consultarTurmaTodasAtivaComInnerJoin();
                     while (reader.Read())
                     {
-                        dataGridView1.Rows.Add(reader["descricaoModalidade"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["professorTurma"].ToString());
+                        dataGridView1.Rows.Add(reader["idEstudio_Turma"].ToString(), reader["descricaoModalidade"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["professorTurma"].ToString());
                     }
                     DAO_Conexao.con.Close();
                 }
@@ -155,9 +153,9 @@ namespace Projeto_DuplinhaFeroz
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            desc = null;
-            desc = dataGridView1.CurrentCell.Value.ToString();
-            Console.WriteLine("dd:" + desc);
+            id = null;
+            id = dataGridView1.CurrentCell.Value.ToString();
+            Console.WriteLine("id:" + id);
         }
     }
 }
