@@ -26,70 +26,113 @@ namespace Projeto_DuplinhaFeroz
             Matricula m = new Matricula();
             try
             {   
-                int nMaxAlunos, nInicial, nFinal, qtdHorarios = 0;
-                string hora;
-                bool horaOcupada = false;
-                int idTurma = int.Parse(id.ToString());
-                if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma, mskCPFMatricula.Text) == false)
+                int nMaxAlunos, nInicial, nFinal, qtdHorarios, qtdDias = 0;
+                string hora, dia;
+                bool horaOcupada = false, diaOcupado = false;
+                if(id != null && mskCPFMatricula.Text != "" && txtNomeAluno.Text != "")
                 {
-                    nInicial = m.retornaNAlunos(idTurma);
-                    nFinal = nInicial + 1;
-                    Console.WriteLine("nFinal: " + nFinal);
-                    Console.WriteLine("IDTURMA:"+idTurma);
-                    nMaxAlunos = m.retornaNMaxAlunos(idTurma);
-                    Console.WriteLine("Numero Maximo de alunos: "+nMaxAlunos);
-                    hora = m.retornaHoraIndicada(idTurma);
-                    Console.WriteLine("Hora indicada: "+hora);
-                    qtdHorarios = m.qtdHorariosOcupados(mskCPFMatricula.Text);
-                    Console.WriteLine("Horários ocupados: "+qtdHorarios);
-                    if(qtdHorarios != 0)
+                    int idTurma = int.Parse(id.ToString());
+                    if (m.retornaSeExisteCPFCadasatradoWhereidTurma(idTurma, mskCPFMatricula.Text) == false)
                     {
-                        string[] horariosOcupados = new string[qtdHorarios];
-                        for (int i = 0; i < qtdHorarios; i++)
+                        nInicial = m.retornaNAlunos(idTurma);
+                        nFinal = nInicial + 1;
+                        Console.WriteLine("nFinal: " + nFinal);
+                        Console.WriteLine("IDTURMA:"+idTurma);
+                        nMaxAlunos = m.retornaNMaxAlunos(idTurma);
+                        Console.WriteLine("Numero Maximo de alunos: "+nMaxAlunos);
+                        dia = m.retornaDiaDaSemanaDaTurma(idTurma);
+                        Console.WriteLine("Dia indicado: "+dia);
+                        qtdDias = m.qtdDiasOcupados(mskCPFMatricula.Text);
+                        Console.WriteLine("Dias ocupados: "+qtdDias);
+                        if(qtdDias > 0)
                         {
-                            horariosOcupados[i] = m.retornaHorariosOcupados(mskCPFMatricula.Text)[i].ToString();
-                        }
-                        Console.WriteLine("vetor: "+horariosOcupados);
-                        for(int i=0; i<qtdHorarios; i++)
-                        {
-                            if (horariosOcupados[i] == hora)
+                            string diasOcupados = "";
+                            diasOcupados = m.retornaDiaDaSemanaTurmaOcupados(mskCPFMatricula.Text);
+                            if(diasOcupados.Contains(dia))
                             {
-                                horaOcupada = true;
+                                diaOcupado = true;
                             }
                         }
-                    }
-                    if (horaOcupada == false)
-                    {
-                        if(nFinal <= nMaxAlunos)
+                        if (diaOcupado)
                         {
-                            if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                            hora = m.retornaHoraIndicada(idTurma);
+                            Console.WriteLine("Hora indicada: "+hora);
+                            qtdHorarios = m.qtdHorariosOcupados(mskCPFMatricula.Text);
+                            Console.WriteLine("Horários ocupados: "+qtdHorarios);
+                            if(qtdHorarios > 0)
                             {
-                                MessageBox.Show("Matricula concluída");
-                                dataGridView1.Rows.Clear();
-                                mskCPFMatricula.Clear();
-                                txtNomeAluno.Text = "";
-                                nFinal = 0;
+                                string horariosOcupados = "";
+                                MySqlDataReader r = m.retornaHorariosOcupados(mskCPFMatricula.Text);
+                                while (r.Read())
+                                {
+                                    horariosOcupados += (r["horaTurma"].ToString() + ", ");
+                                }
+                                DAO_Conexao.con.Close();
+                                Console.WriteLine("horas ocupadas: "+horariosOcupados);
+                                if (horariosOcupados.Contains(hora))
+                                {
+                                    horaOcupada = true;
+                                }
+                            }
+                            if (horaOcupada == false)
+                            {
+                                if(nFinal <= nMaxAlunos)
+                                {
+                                    if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                                    {
+                                        MessageBox.Show("Matricula concluída");
+                                        dataGridView1.Rows.Clear();
+                                        mskCPFMatricula.Clear();
+                                        txtNomeAluno.Text = "";
+                                        nFinal = 0;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Erro ao matricular este aluno");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Número maximo de alunos atingidos nessa turma.");
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Erro ao matricular este aluno");
+                                MessageBox.Show("Este aluno já está matriculado em outra turma no mesmo dia e horário. Tente selecionar um aluno diferente ou outra turma disponível.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Número maximo de alunos atingidos nessa turma.");
+                            if (nFinal <= nMaxAlunos)
+                            {
+                                if (m.matricular(mskCPFMatricula.Text.ToString(), idTurma) && (m.atualizarNAlunosMatriculados(nFinal, idTurma)))
+                                {
+                                    MessageBox.Show("Matricula concluída");
+                                    dataGridView1.Rows.Clear();
+                                    mskCPFMatricula.Clear();
+                                    txtNomeAluno.Text = "";
+                                    nFinal = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Erro ao matricular este aluno");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Número maximo de alunos atingidos nessa turma.");
+                            }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Este aluno já está matriculado em outra turma no mesmo horário. Tente selecionar um aluno diferente ou outra turma disponível.");
+                        MessageBox.Show("Aluno já cadastrado, selecione outra turma.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Aluno já cadastrado, selecione outra turma.");
-                }
-                    
+                    MessageBox.Show("Nenhum campo pode estar vazio. Preencha/ selecione todos para prosseguir");
+                }  
             }catch (Exception ex)
             {
                 MessageBox.Show("Erro na matricula");

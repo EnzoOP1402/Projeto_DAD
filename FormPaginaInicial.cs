@@ -48,6 +48,8 @@ namespace Projeto_DuplinhaFeroz
                 cadastroToolStripMenuItem.Enabled = true;
                 exclusãoToolStripMenuItem.Enabled = true;
                 atualizaçãoToolStripMenuItem.Enabled = true;
+                matricularToolStripMenuItem.Enabled = true;
+                desmatricularToolStripMenuItem.Enabled = true;
             }
             else if (DAO_Conexao.VeriLogin(textBox1.Text, textBox2.Text) == 2)
                 {

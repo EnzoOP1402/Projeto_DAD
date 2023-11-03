@@ -290,8 +290,13 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
+                MySqlDataReader r = null;
                 MySqlCommand comando = new MySqlCommand("select count(horaTurma) from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '"+cpf+"'", DAO_Conexao.con);
-                resultado = int.Parse(comando.ExecuteReader().ToString());
+                r = comando.ExecuteReader();
+                if(r.Read())
+                {
+                    resultado = int.Parse(r["count(horaTurma)"].ToString());
+                }
             }
             catch
             {
@@ -310,8 +315,13 @@ namespace Projeto_DuplinhaFeroz
             try
             {
                 DAO_Conexao.con.Open();
+                MySqlDataReader r = null;
                 MySqlCommand comando = new MySqlCommand("select horaTurma from Estudio_Turma where idEstudio_Turma = "+id, DAO_Conexao.con);
-                resultado = comando.ExecuteReader().ToString();
+                r = comando.ExecuteReader();
+                if(r.Read()) 
+                {
+                    resultado = r["horaTurma"].ToString();
+                }
             }
             catch
             {
@@ -333,9 +343,86 @@ namespace Projeto_DuplinhaFeroz
                 MySqlCommand comando = new MySqlCommand("select horaTurma from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '"+cpf+"'", DAO_Conexao.con);
                 resultado = comando.ExecuteReader();
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            return resultado;
+        }
+
+        public string retornaDiaDaSemanaDaTurma(int id)
+        {
+            string resultado = "";
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select diasemanaTurma from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and idEstudio_Turma = " + id + "", DAO_Conexao.con);
+                MySqlDataReader r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    resultado = r["diasemanaTurma"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
+        public string retornaDiaDaSemanaTurmaOcupados(string cpf)
+        {
+            string resultado = "";
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("select diasemanaTurma from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '" + cpf + "'", DAO_Conexao.con);
+                MySqlDataReader r = comando.ExecuteReader();
+                while (r.Read())
+                {
+                    resultado += (r["diasemanaTurma"].ToString() + " - ");
+                }
+                Console.WriteLine("diasemanaTurma: {"+resultado+"}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("-----------ERRO--------------");
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
+        public int qtdDiasOcupados(string cpf)
+        {
+            int resultado = 0;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlDataReader r = null;
+                MySqlCommand comando = new MySqlCommand("select count(diasemanaTurma) from Estudio_Turma inner join Estudio_Matricula on Estudio_Turma.idEstudio_Turma = Estudio_Matricula.idTurma and CPFaluno = '" + cpf + "'", DAO_Conexao.con);
+                r = comando.ExecuteReader();
+                if (r.Read())
+                {
+                    resultado = int.Parse(r["count(diasemanaTurma)"].ToString());
+                }
+            }
             catch
             {
                 Console.WriteLine("-----------ERRO--------------");
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
             }
             return resultado;
         }
