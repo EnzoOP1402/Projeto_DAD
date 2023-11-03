@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -156,6 +157,19 @@ namespace Projeto_DuplinhaFeroz
             id = null;
             id = dataGridView1.CurrentCell.Value.ToString();
             Console.WriteLine("id:" + id);
+
+            /* -- selecionar a linha inteira e obter os valores de cada coluna --
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                desc = row.Cells[0].Value.ToString();
+                dia = row.Cells[1].Value.ToString();
+                hora = row.Cells[2].Value.ToString();
+                professor = row.Cells[3].Value.ToString();
+            }
+            Console.WriteLine("desc:" + desc);
+            Console.WriteLine("dia:" + dia);
+            Console.WriteLine("hora:" + hora);
+            Console.WriteLine("professor:" + professor);*/
         }
     }
 }
