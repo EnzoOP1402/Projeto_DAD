@@ -106,7 +106,7 @@ namespace Projeto_DuplinhaFeroz
             // 
             this.txtCPF.Location = new System.Drawing.Point(82, 30);
             this.txtCPF.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCPF.Mask = "999-999-999-99";
+            this.txtCPF.Mask = "000-000-000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(86, 20);
             this.txtCPF.TabIndex = 1;
@@ -150,7 +150,7 @@ namespace Projeto_DuplinhaFeroz
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(82, 223);
-            this.txtTel.Mask = "(99)999999999";
+            this.txtTel.Mask = "(00)000000000";
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(86, 20);
             this.txtTel.TabIndex = 15;
