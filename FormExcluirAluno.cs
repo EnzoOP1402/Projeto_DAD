@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,18 @@ namespace Projeto_DuplinhaFeroz
 
         private void mskCPFExcluir_KeyPress(object sender, KeyPressEventArgs e)
         {
+            int ativo = 0;
             Aluno aluno = new Aluno(mskCPFExcluir.Text);
             if (e.KeyChar == 13)
             {
-                if (aluno.consultarAluno())
+                MySqlDataReader r = aluno.verificaAlunoExcluido(mskCPFExcluir.Text);
+                if (r.Read())
+                {
+                    ativo = int.Parse(r["ativo"].ToString());
+                    Console.WriteLine("ativo no int: "+ ativo);
+                }
+                DAO_Conexao.con.Close();
+                if (aluno.consultarAluno() && ativo == 0)
                 {
                     DAO_Conexao.con.Close();
                     if (aluno.excluirAluno())
@@ -34,13 +43,15 @@ namespace Projeto_DuplinhaFeroz
                     {
                         MessageBox.Show("Erro ao completar a execução. Tente novamente");
                     }
+                    DAO_Conexao.con.Close();
                 }
-                /* Fica dando erro por algum motivo, mas funciona sem
                 else
                 {
-                    MessageBox.Show("Aluno inexistente");
-                }*/
+                    MessageBox.Show("Aluno já excluido ou inexistente");
+                }
+                DAO_Conexao.con.Close();
             }
+            
         }
     }
 }

@@ -224,14 +224,54 @@ namespace Projeto_DuplinhaFeroz
             return resultado;
         }
 
+        public MySqlDataReader verificaAlunoExcluido(string cpf)
+        {
+            MySqlDataReader resultado = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand consulta = new MySqlCommand("SELECT ativo FROM Estudio_Aluno WHERE CPF='" + cpf + "'", DAO_Conexao.con);
+                resultado = consulta.ExecuteReader();
+                Console.WriteLine("CPFdoAlunoExcluido: "+cpf);
+                int ativo = int.Parse(resultado["ativo"].ToString());
+                Console.WriteLine(("ativo no metodo: ")+ativo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return resultado;
+        }
+
+        public bool setarAtiva(string cpf)
+        {
+            bool resultado = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand comando = new MySqlCommand("update Estudio_Aluno set ativo = 0 where CPF = '" + cpf + "'", DAO_Conexao.con);
+                comando.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return resultado;
+        }
+
         public bool verificaCPF() //string CPF - sem parâmetro
         {
             int soma, resto, cont = 0;
             soma = 0;
 
             CPF = CPF.Trim();
-            CPF = CPF.Replace(".", "");
-            CPF = CPF.Replace("-", "");
+            CPF = CPF.Replace(".", ".");
+            CPF = CPF.Replace("-", "-");
 
             for (int i = 0; i < CPF.Length; i++)
             {

@@ -53,8 +53,11 @@ namespace Projeto_DuplinhaFeroz
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand sql = new MySqlCommand("select * from Estudio_Login where usuario = '" + usuario + "'", DAO_Conexao.con);
-                sql.ExecuteNonQuery();
-                resultado = true;
+                MySqlDataReader r = sql.ExecuteReader();
+                if (r.Read())
+                {
+                    resultado = true;
+                }
             }
             catch (Exception ex)
             {

@@ -42,6 +42,7 @@ namespace Projeto_DuplinhaFeroz
                         txtNome.Text = "";
                         txtNum.Text = "";
                         txtTel.Text = "";
+                        pictureBox1.Image = null;
                     }
                     else
                     {

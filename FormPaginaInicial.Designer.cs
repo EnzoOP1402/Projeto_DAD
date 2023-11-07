@@ -100,19 +100,19 @@ namespace Projeto_DuplinhaFeroz
             // cadastrarLoginToolStripMenuItem
             // 
             this.cadastrarLoginToolStripMenuItem.Name = "cadastrarLoginToolStripMenuItem";
-            this.cadastrarLoginToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.cadastrarLoginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastrarLoginToolStripMenuItem.Text = "Cadastrar Login";
             this.cadastrarLoginToolStripMenuItem.Click += new System.EventHandler(this.cadastrarLoginToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(154, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -265,26 +265,26 @@ namespace Projeto_DuplinhaFeroz
             // matricularToolStripMenuItem
             // 
             this.matricularToolStripMenuItem.Name = "matricularToolStripMenuItem";
-            this.matricularToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.matricularToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.matricularToolStripMenuItem.Text = "Matricular";
             this.matricularToolStripMenuItem.Click += new System.EventHandler(this.matricularToolStripMenuItem_Click);
             // 
             // desmatricularToolStripMenuItem
             // 
             this.desmatricularToolStripMenuItem.Name = "desmatricularToolStripMenuItem";
-            this.desmatricularToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.desmatricularToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.desmatricularToolStripMenuItem.Text = "Desmatricular";
             this.desmatricularToolStripMenuItem.Click += new System.EventHandler(this.desmatricularToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(175, 6);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultarToolStripMenuItem.Text = "Consultar Matrícula";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -310,27 +310,27 @@ namespace Projeto_DuplinhaFeroz
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(548, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Login de ADM";
+            this.label5.Text = "Login restrito";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(567, 106);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "123";
+            this.label4.Text = "1402";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(567, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "viton";
+            this.label3.Text = "Enzo";
             // 
             // button1
             // 
@@ -367,7 +367,7 @@ namespace Projeto_DuplinhaFeroz
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(130, 20);
             this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "1402";
+            this.textBox2.Text = "123";
             // 
             // textBox1
             // 
@@ -375,7 +375,7 @@ namespace Projeto_DuplinhaFeroz
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(130, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Enzo";
+            this.textBox1.Text = "viton";
             // 
             // FormPaginaInicial
             // 
