@@ -39,7 +39,7 @@ namespace Projeto_DuplinhaFeroz
                     MySqlDataReader reader = t.consultarTurmaID3(int.Parse(comboBox1.Text));
                     while (reader.Read())
                     {
-                        dataGridView1.Rows.Add(reader["idEstudio_Turma"].ToString(), reader["idModalidade"].ToString(), reader["descricaoModalidade"].ToString(), reader["professorTurma"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["nalunosmatriculadosTurma"].ToString(), reader["ativa"].ToString());
+                        dataGridView1.Rows.Add(reader["idEstudio_Turma"].ToString(), reader["idModalidade"].ToString(), reader["descricaoModalidade"].ToString(), reader["professorTurma"].ToString(), reader["diasemanaTurma"].ToString(), reader["horaTurma"].ToString(), reader["nAlunosMatriculados"].ToString(), reader["ativa"].ToString());
                     }
                     DAO_Conexao.con.Close();
                 }
