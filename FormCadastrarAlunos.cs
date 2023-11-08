@@ -48,7 +48,6 @@ namespace Projeto_DuplinhaFeroz
                     {
                         MessageBox.Show("Erro no cadastro");
                     }
-
                 }
                 else
                 {
@@ -67,15 +66,22 @@ namespace Projeto_DuplinhaFeroz
 
             if (e.KeyChar == 13)
             {
-                if (aluno.consultarAluno())
+                if (aluno.verificaCPF())
                 {
-                    MessageBox.Show("Aluno já cadastrado!");
+                    if (aluno.consultarAluno())
+                    {
+                        MessageBox.Show("Aluno já cadastrado!");
+                    }
+                    else
+                    {
+                        txtNome.Focus();
+                    }
+                    DAO_Conexao.con.Close();
                 }
                 else
                 {
-                    txtNome.Focus();
+                    MessageBox.Show("CPF inválido");
                 }
-                DAO_Conexao.con.Close();
             }
         }
 

@@ -96,7 +96,11 @@ namespace Projeto_DuplinhaFeroz
                 MySqlDataReader resultado = consulta.ExecuteReader();
                 if (resultado.Read())
                 {
-                    existe = true;
+                    if(resultado["CPF"].ToString() == CPF)
+                    {
+                        existe = true;
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -270,8 +274,8 @@ namespace Projeto_DuplinhaFeroz
             soma = 0;
 
             CPF = CPF.Trim();
-            CPF = CPF.Replace(".", ".");
-            CPF = CPF.Replace("-", "-");
+            CPF = CPF.Replace(".", "");
+            CPF = CPF.Replace("-", "");
 
             for (int i = 0; i < CPF.Length; i++)
             {
