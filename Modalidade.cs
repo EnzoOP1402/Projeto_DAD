@@ -237,8 +237,14 @@ namespace Projeto_DuplinhaFeroz
             {
                 DAO_Conexao.con.Open();
                 MySqlCommand sql = new MySqlCommand("select idEstudio_Modalidade from Estudio_Modalidade where descricaoModalidade = '" + desc + "'", DAO_Conexao.con);
-                sql.ExecuteNonQuery();
-                resultado = true;
+                MySqlDataReader r = sql.ExecuteReader();
+                if (r.Read())
+                {
+                    if (r["idEstudio_Modalidade"].ToString() != null || r["idEstudio_Modalidade"].ToString() != "")
+                    {
+                        resultado = true;
+                    }
+                }
             }
             catch (Exception ex)
             {
